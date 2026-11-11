@@ -42,6 +42,27 @@ test('professional WordPress projects remain separate from personal software pro
   assert.match(migration, /contributions/)
 })
 
+test('removed security skills are absent from the public skill catalog', async () => {
+  const skills = await read('src/data/skills.ts')
+  for (const name of ['Cybersecurity Fundamentals', 'Authentication', 'Authorization', 'Secure Coding']) assert.doesNotMatch(skills, new RegExp(`name: '${name}'`))
+  const migration = await read('backend/database/migrations/2026_11_11_000251_hide_removed_security_skills.php')
+  assert.match(migration, /is_public.*false/)
+})
+
+test('advanced Java programming is listed in the programming skills', async () => {
+  const skills = await read('src/data/skills.ts')
+  assert.match(skills, /name: 'Advanced Java Programming'/)
+  const seeder = await read('backend/database/seeders/PortfolioSeeder.php')
+  assert.match(seeder, /'Advanced Java Programming'/)
+})
+
+test('Linux System is listed in the backend skills', async () => {
+  const skills = await read('src/data/skills.ts')
+  assert.match(skills, /name: 'Linux System'/)
+  const seeder = await read('backend/database/seeders/PortfolioSeeder.php')
+  assert.match(seeder, /'Linux System'/)
+})
+
 test('education and certification records preserve supplied academic status', async () => {
   const education = await read('src/data/education.ts')
   assert.match(education, /title:\s*'Bachelor of Computer Applications \(BCA\)'/)

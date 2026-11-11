@@ -19,6 +19,7 @@ export const skillGroups = [
       { name: 'Laravel', description: 'PHP framework for structured web application development.', projectSlugs: ['erp-system', 'pos-system', 'social-discovery', 'digital-wallet'] },
       { name: 'Node.js', description: 'JavaScript runtime concepts for backend services.' },
       { name: 'REST API Development', description: 'Resource-oriented API design and frontend integration.' },
+      { name: 'Linux System', description: 'Linux system and development environment fundamentals.' },
     ],
   },
   {
@@ -27,6 +28,7 @@ export const skillGroups = [
       { name: 'C', description: 'Programming fundamentals and problem solving.' },
       { name: 'C++', description: 'Object-oriented programming foundations.' },
       { name: 'Java', description: 'General-purpose programming and application fundamentals.' },
+      { name: 'Advanced Java Programming', description: 'Java programming concepts for structured application development.' },
       { name: 'Python', description: 'General-purpose programming and scripting foundations.' },
       { name: 'JavaScript', description: 'Application logic for frontend and web development.' },
       { name: 'PHP', description: 'Web-oriented server-side programming.' },
@@ -51,10 +53,6 @@ export const skillGroups = [
   {
     name: 'Security', eyebrow: '06', description: 'Security-aware development principles and application concepts.',
     skills: [
-      { name: 'Cybersecurity Fundamentals', description: 'Foundational security concepts and threat awareness.' },
-      { name: 'Authentication', description: 'Identity and sign-in flow concepts.' },
-      { name: 'Authorization', description: 'Access control and permission concepts.' },
-      { name: 'Secure Coding', description: 'Development practices that account for application risk.' },
       { name: 'Web Application Security', description: 'Security considerations for web application design.' },
       { name: 'Database Security', description: 'Protecting application data and database access.' },
     ],

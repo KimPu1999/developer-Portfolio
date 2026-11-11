@@ -60,11 +60,11 @@ class PortfolioSeeder extends Seeder
 
         $groups = [
             'Frontend' => ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS'],
-            'Backend' => ['PHP', 'Laravel', 'Node.js', 'REST API Development'],
-            'Programming' => ['C', 'C++', 'Java', 'Python', 'JavaScript', 'PHP'],
+            'Backend' => ['PHP', 'Laravel', 'Node.js', 'REST API Development', 'Linux System'],
+            'Programming' => ['C', 'C++', 'Java', 'Advanced Java Programming', 'Python', 'JavaScript', 'PHP'],
             'Databases' => ['MySQL', 'PostgreSQL', 'SQL'],
             'CMS' => ['WordPress'],
-            'Security' => ['Cybersecurity Fundamentals', 'Authentication', 'Authorization', 'Secure Coding', 'Web Application Security', 'Database Security'],
+            'Security' => ['Web Application Security', 'Database Security'],
         ];
         foreach ($groups as $order => $names) {
             $category = SkillCategory::query()->updateOrCreate(['name' => $order], ['description' => $order.' technologies and concepts.', 'display_order' => array_search($order, array_keys($groups), true)]);
