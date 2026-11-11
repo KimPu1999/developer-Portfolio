@@ -110,6 +110,12 @@ body { margin: 0; min-width: 320px; background: var(--color-background); color: 
 [class*="hover:text-cyan-"]:hover { color: var(--color-accent-hover) !important; }
 [class*="hover:border-cyan-"]:hover { border-color: var(--color-accent) !important; }
 [class*="hover:bg-cyan-"]:hover { background-color: var(--color-accent-hover) !important; }
+
+@media print {
+  .site-header, .site-footer, .no-print { display: none !important; }
+  .print-resume-page { max-width: none !important; min-height: 100vh; padding: 0 !important; }
+  @page { size: A4; margin: 16mm; }
+}
 [class*="ring-cyan-"] { --tw-ring-color: var(--color-focus) !important; }
 [class*="ring-red-"] { --tw-ring-color: var(--color-error) !important; }
 [class*="ring-offset-slate-"] { --tw-ring-offset-color: var(--color-background) !important; }

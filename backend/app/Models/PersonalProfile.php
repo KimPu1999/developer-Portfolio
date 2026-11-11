@@ -9,7 +9,7 @@ class PersonalProfile extends Model
 {
     use HasUuids;
 
-    protected $fillable = ['display_name', 'email', 'phone', 'location', 'initials', 'role', 'subtitle', 'summary', 'about', 'career_objective', 'focus_areas', 'interests', 'profile_image_path'];
+    protected $fillable = ['display_name', 'email', 'phone', 'location', 'initials', 'role', 'subtitle', 'summary', 'about', 'career_objective', 'focus_areas', 'interests', 'profile_image_path', 'profile_image_position'];
 
     protected function casts(): array
     {

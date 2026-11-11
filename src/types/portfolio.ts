@@ -32,6 +32,7 @@ export interface Profile {
   summary: string
   about: string
   image?: string
+  imagePosition?: string
   careerObjective: string
   focusAreas: string[]
   interests: string[]

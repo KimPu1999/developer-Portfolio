@@ -52,6 +52,8 @@ Route::prefix('v1')->group(function (): void {
         Route::apiResource('/social-links', AdminSocialLinkController::class)->except(['create', 'edit', 'show']);
         Route::get('/profile', [AdminProfileController::class, 'show']);
         Route::put('/profile', [AdminProfileController::class, 'update']);
+        Route::post('/profile/photo', [AdminProfileController::class, 'uploadPhoto']);
+        Route::delete('/profile/photo', [AdminProfileController::class, 'removePhoto']);
         Route::get('/education', [AdminContentController::class, 'education']);
         Route::post('/education', [AdminContentController::class, 'saveEducation']);
         Route::post('/education/reorder', [AdminContentController::class, 'reorderEducation']);

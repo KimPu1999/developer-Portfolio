@@ -6,6 +6,8 @@ export const profile = {
   role: 'Full-Stack Software Developer',
   subtitle: 'BCA Graduate | Studied Cybersecurity',
   summary: 'I am a Full-Stack Software Developer and WordPress Developer with 3 years of WordPress development experience, 20+ websites built and academic study in Cybersecurity.',
+  image: undefined,
+  imagePosition: 'center',
   about: 'I am a Bachelor of Computer Applications (BCA) graduate who studied Cybersecurity and has 3 years of professional WordPress development experience. I have developed more than 20 websites, built custom WordPress themes with personalized layouts and designs, and worked with HTML, CSS, JavaScript and PHP. I also work with React, Laravel and relational databases to build modern full-stack software applications. My project work includes ERP, POS, Social Discovery and Digital Wallet platforms.',
   careerObjective: 'To contribute as a Software Developer or Full-Stack Developer by applying my programming, database and web development knowledge to reliable, scalable and user-friendly software solutions.',
   focusAreas: ['WordPress website development', 'Custom WordPress theme development', 'Full-stack web development', 'Secure application development', 'Responsive web design'],

@@ -15,6 +15,7 @@ use App\Models\SkillCategory;
 use App\Models\SocialLink;
 use App\Models\ResumeMetadata;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Storage;
 
 class PublicContentController extends Controller
 {
@@ -22,7 +23,15 @@ class PublicContentController extends Controller
     {
         $education = EducationResource::collection(EducationRecord::where('is_public', true)->orderBy('display_order')->get())->resolve();
         $certifications = CertificationResource::collection(Certification::where('is_public', true)->orderBy('display_order')->orderBy('created_at')->get())->resolve();
-        return response()->json(['profile' => PersonalProfile::query()->latest()->first(), 'education' => $education, 'experience' => ExperienceEntry::where('is_public', true)->orderBy('display_order')->get(), 'skills' => SkillCategory::with(['skills' => fn ($query) => $query->where('is_public', true)->orderBy('display_order')])->orderBy('display_order')->get(), 'socialLinks' => SocialLink::where('is_enabled', true)->orderBy('display_order')->get(), 'certifications' => $certifications, 'resume' => ResumeMetadata::where('is_public', true)->latest()->first()]);
+        $profile = PersonalProfile::query()->latest()->first();
+        $profileData = $profile?->toArray();
+        if ($profileData) {
+            $profileData['profile_image_url'] = $profile->profile_image_path && Storage::disk('public')->exists($profile->profile_image_path)
+                ? Storage::disk('public')->url($profile->profile_image_path)
+                : null;
+            unset($profileData['profile_image_path']);
+        }
+        return response()->json(['profile' => $profileData, 'education' => $education, 'experience' => ExperienceEntry::where('is_public', true)->orderBy('display_order')->get(), 'skills' => SkillCategory::with(['skills' => fn ($query) => $query->where('is_public', true)->orderBy('display_order')])->orderBy('display_order')->get(), 'socialLinks' => SocialLink::where('is_enabled', true)->orderBy('display_order')->get(), 'certifications' => $certifications, 'resume' => ResumeMetadata::where('is_public', true)->latest()->first()]);
     }
 
     public function projects(): JsonResponse
