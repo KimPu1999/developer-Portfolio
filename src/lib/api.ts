@@ -13,6 +13,10 @@ export function sendContact(payload: ContactPayload) {
   return request<{ message: string }>('/contact', { method: 'POST', body: JSON.stringify(payload) })
 }
 
+export function publicProfile() {
+  return request<{ education: Array<Record<string, unknown>>; certifications: Array<Record<string, unknown>> }>('/profile')
+}
+
 async function csrf() {
   const origin = apiBase.replace(/\/api\/v1$/, '')
   await fetch(`${origin}/sanctum/csrf-cookie`, { credentials: 'include', headers: { Accept: 'application/json' } })
@@ -44,8 +48,15 @@ export function adminSocialLinks() { return request<{ socialLinks: Array<{ id: s
 export function createAdminSocialLink(payload: Record<string, unknown>) { return request<{ socialLink: { id: string } }>('/admin/social-links', { method: 'POST', body: JSON.stringify(payload) }) }
 export function adminEducation() { return request<{ education: Array<Record<string, unknown>> }>('/admin/education') }
 export function saveAdminEducation(payload: Record<string, unknown>) { return request<{ education: Record<string, unknown> }>('/admin/education', { method: 'POST', body: JSON.stringify(payload) }) }
+export function updateAdminEducation(id: string, payload: Record<string, unknown>) { return request<{ education: Record<string, unknown> }>('/admin/education/' + id, { method: 'PUT', body: JSON.stringify(payload) }) }
+export function deleteAdminEducation(id: string) { return request<{ message: string }>('/admin/education/' + id, { method: 'DELETE' }) }
+export function reorderAdminEducation(items: Array<{ id: string; display_order: number }>) { return request<{ message: string }>('/admin/education/reorder', { method: 'POST', body: JSON.stringify({ items }) }) }
 export function adminCertifications() { return request<{ certifications: Array<Record<string, unknown>> }>('/admin/certifications') }
 export function saveAdminCertification(payload: Record<string, unknown>) { return request<{ certification: Record<string, unknown> }>('/admin/certifications', { method: 'POST', body: JSON.stringify(payload) }) }
+export function updateAdminCertification(id: string, payload: Record<string, unknown>) { return request<{ certification: Record<string, unknown> }>('/admin/certifications/' + id, { method: 'PUT', body: JSON.stringify(payload) }) }
+export function deleteAdminCertification(id: string) { return request<{ message: string }>('/admin/certifications/' + id, { method: 'DELETE' }) }
+export function reorderAdminCertifications(items: Array<{ id: string; display_order: number }>) { return request<{ message: string }>('/admin/certifications/reorder', { method: 'POST', body: JSON.stringify({ items }) }) }
+export async function uploadAdminCertificate(id: string, file: File, isPublic: boolean, isDownloadable: boolean) { const body = new FormData(); body.append('file', file); body.append('is_public', String(isPublic)); body.append('is_downloadable', String(isDownloadable)); const response = await fetch(apiBase + '/admin/certifications/' + id + '/certificate', { method: 'POST', credentials: 'include', headers: { Accept: 'application/json' }, body }); const data = await response.json().catch(() => ({})); if (!response.ok) throw new Error(data.message || 'The certificate upload could not be completed.'); return data as { certification: Record<string, unknown> } }
 export function adminExperience() { return request<{ experience: Array<Record<string, unknown>> }>('/admin/experience') }
 export function saveAdminExperience(payload: Record<string, unknown>) { return request<{ experience: Record<string, unknown> }>('/admin/experience', { method: 'POST', body: JSON.stringify(payload) }) }
 export function adminResume() { return request<{ resume: Record<string, unknown> | null }>('/admin/resume') }

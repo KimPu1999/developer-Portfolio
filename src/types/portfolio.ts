@@ -42,7 +42,10 @@ export interface EducationRecord {
   id: string
   title: string
   focus: string
+  status?: string
+  academicLevel?: string
   institution: string
+  location?: string
   graduationYear?: string
   dates?: string
   coursework?: string[]
@@ -66,11 +69,15 @@ export interface ExperienceItem {
 export interface Certification {
   id: string
   name: string
+  category?: string
+  description?: string
   issuer?: string
   issueDate?: string
   credentialId?: string
   verificationUrl?: string
   certificateFile?: string
+  certificateMimeType?: string
+  isDownloadable?: boolean
   verified: boolean
 }
 

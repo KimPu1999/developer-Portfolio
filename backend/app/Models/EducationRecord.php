@@ -9,7 +9,7 @@ class EducationRecord extends Model
 {
     use HasUuids;
 
-    protected $fillable = ['title', 'focus', 'institution', 'graduation_year', 'date_label', 'coursework', 'related_technologies', 'is_public', 'display_order'];
+    protected $fillable = ['title', 'focus', 'status_label', 'academic_level', 'institution', 'location', 'graduation_year', 'date_label', 'coursework', 'related_technologies', 'is_public', 'display_order'];
 
     protected function casts(): array
     {

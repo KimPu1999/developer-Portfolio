@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProjectResource;
+use App\Http\Resources\CertificationResource;
+use App\Http\Resources\EducationResource;
 use App\Models\Certification;
 use App\Models\EducationRecord;
 use App\Models\ExperienceEntry;
@@ -18,7 +20,9 @@ class PublicContentController extends Controller
 {
     public function profile(): JsonResponse
     {
-        return response()->json(['profile' => PersonalProfile::query()->latest()->first(), 'education' => EducationRecord::where('is_public', true)->orderBy('display_order')->get(), 'experience' => ExperienceEntry::where('is_public', true)->orderBy('display_order')->get(), 'skills' => SkillCategory::with(['skills' => fn ($query) => $query->where('is_public', true)->orderBy('display_order')])->orderBy('display_order')->get(), 'socialLinks' => SocialLink::where('is_enabled', true)->orderBy('display_order')->get(), 'certifications' => Certification::where('is_public', true)->latest()->get(), 'resume' => ResumeMetadata::where('is_public', true)->latest()->first()]);
+        $education = EducationResource::collection(EducationRecord::where('is_public', true)->orderBy('display_order')->get())->resolve();
+        $certifications = CertificationResource::collection(Certification::where('is_public', true)->orderBy('display_order')->orderBy('created_at')->get())->resolve();
+        return response()->json(['profile' => PersonalProfile::query()->latest()->first(), 'education' => $education, 'experience' => ExperienceEntry::where('is_public', true)->orderBy('display_order')->get(), 'skills' => SkillCategory::with(['skills' => fn ($query) => $query->where('is_public', true)->orderBy('display_order')])->orderBy('display_order')->get(), 'socialLinks' => SocialLink::where('is_enabled', true)->orderBy('display_order')->get(), 'certifications' => $certifications, 'resume' => ResumeMetadata::where('is_public', true)->latest()->first()]);
     }
 
     public function projects(): JsonResponse

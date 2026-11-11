@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\EducationRecord;
+use App\Models\Certification;
 use App\Models\PersonalProfile;
 use App\Models\Project;
 use App\Models\Skill;
@@ -24,9 +25,24 @@ class PortfolioSeeder extends Seeder
         ])->save();
 
         EducationRecord::query()->updateOrCreate(['title' => 'Bachelor of Computer Applications (BCA)'], [
-            'focus' => 'Cybersecurity academic background', 'institution' => 'University / College to be added', 'graduation_year' => 'Graduation year to be added', 'date_label' => 'Dates to be added',
+            'focus' => 'Cybersecurity', 'status_label' => 'Graduated', 'academic_level' => 'Graduated', 'institution' => 'Tilak Maharashtra Vidyapeeth (TMV)', 'location' => 'Pune, India', 'graduation_year' => 'Graduation year to be added', 'date_label' => 'Dates to be added', 'display_order' => 0,
             'related_technologies' => ['Programming fundamentals', 'Web development', 'Databases', 'Cybersecurity fundamentals'], 'is_public' => true,
         ]);
+        EducationRecord::query()->updateOrCreate(['title' => 'Bachelor of Science (B.Sc.) in Mathematics'], [
+            'focus' => 'Mathematics', 'status_label' => null, 'academic_level' => 'Second Year', 'institution' => 'Kalay University', 'location' => 'Kalay, Myanmar', 'date_label' => 'Dates to be added',
+            'related_technologies' => [], 'is_public' => true, 'display_order' => 1,
+        ]);
+
+        $certifications = [
+            ['name' => 'LCCI Level I', 'category' => 'LCCI'],
+            ['name' => 'LCCI Level II', 'category' => 'LCCI'],
+            ['name' => 'LCCI Level III', 'category' => 'LCCI'],
+            ['name' => 'JavaScript Programming Certificate', 'category' => 'Programming'],
+            ['name' => 'C++ Programming Certificate', 'category' => 'Programming'],
+        ];
+        foreach ($certifications as $order => $certificate) {
+            Certification::query()->updateOrCreate(['name' => $certificate['name']], [...$certificate, 'description' => 'Certificate record supplied; issuer and credential details remain pending certificate verification.', 'display_order' => $order, 'is_public' => true, 'is_verified' => false]);
+        }
 
         $groups = [
             'Frontend' => ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS'],

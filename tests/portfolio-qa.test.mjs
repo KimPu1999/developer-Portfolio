@@ -29,6 +29,31 @@ test('public project data does not claim completed project status', async () => 
   assert.match(projects, /status:\s*'In Development'/)
 })
 
+test('education and certification records preserve supplied academic status', async () => {
+  const education = await read('src/data/education.ts')
+  assert.match(education, /title:\s*'Bachelor of Computer Applications \(BCA\)'/)
+  assert.match(education, /status:\s*'Graduated'/)
+  assert.match(education, /institution:\s*'Tilak Maharashtra Vidyapeeth \(TMV\)'/)
+  assert.match(education, /location:\s*'Pune, India'/)
+  assert.match(education, /title:\s*'Bachelor of Science \(B\.Sc\.\) in Mathematics'/)
+  assert.match(education, /academicLevel:\s*'Second Year'/)
+  assert.match(education, /institution:\s*'Kalay University'/)
+  assert.match(education, /location:\s*'Kalay, Myanmar'/)
+  assert.doesNotMatch(education, /B\.Sc[\s\S]{0,500}status:\s*'Graduated'/)
+  const certifications = await read('src/data/certifications.ts')
+  for (const title of ['LCCI Level I', 'LCCI Level II', 'LCCI Level III', 'JavaScript Programming Certificate', 'C++ Programming Certificate']) assert.match(certifications, new RegExp(title.replace(/[+]/g, '\\$&')))
+  assert.doesNotMatch(certifications, /London Chamber of Commerce/)
+})
+
+test('certificate actions are conditional on configured files and download permission', async () => {
+  const card = await read('src/components/certifications/CertificationCard.tsx')
+  assert.match(card, /item\.certificateFile &&/)
+  assert.match(card, /item\.isDownloadable/)
+  const resources = await read('backend/app/Http/Resources/CertificationResource.php')
+  assert.match(resources, /certificate_disk === 'public'/)
+  assert.match(resources, /isDownloadable/)
+})
+
 test('security and crawl controls are present', async () => {
   const vercel = JSON.parse(await read('vercel.json'))
   const headers = vercel.headers.flatMap((entry) => entry.headers)
