@@ -22,13 +22,14 @@ export function ProjectDetailPage() {
   const [remoteProject, setRemoteProject] = useState<PortfolioProject>()
   const [loading, setLoading] = useState(!staticProject)
   useEffect(() => {
-    if (staticProject) { setRemoteProject(undefined); setLoading(false); return }
     if (!slug) { setLoading(false); return }
-    setLoading(true)
-    publicProject(slug).then((response) => setRemoteProject(apiProjectToPortfolioProject(response))).catch(() => setRemoteProject(undefined)).finally(() => setLoading(false))
+    let active = true
+    if (!staticProject) setLoading(true)
+    publicProject(slug).then((response) => { if (active) setRemoteProject(apiProjectToPortfolioProject(response)) }).catch(() => { if (active) setRemoteProject(undefined) }).finally(() => { if (active) setLoading(false) })
+    return () => { active = false }
   }, [slug, staticProject])
   if (loading) return <main className="grid min-h-[60vh] place-items-center"><p role="status" className="text-sm text-slate-500">Loading project details…</p></main>
-  const project = staticProject || remoteProject
+  const project = remoteProject || staticProject
   if (!project) return <NotFoundPage />
   const index = allProjects.findIndex((item) => item.slug === project.slug)
   const previous = index > 0 ? allProjects[index - 1] : undefined

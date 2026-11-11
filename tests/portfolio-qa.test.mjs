@@ -31,7 +31,7 @@ test('public project data does not claim completed project status', async () => 
 
 test('professional WordPress projects remain separate from personal software projects', async () => {
   const projects = await read('src/data/projects.ts')
-  for (const title of ['FusionSol', 'Thetys Myanmar', 'Jarviz', 'F-Tech']) assert.match(projects, new RegExp(`title: '${title}'`))
+  for (const title of ['FusionSol', 'Thetys Myanmar', 'Jarviz', 'F-Tech Solution', 'Attendent']) assert.match(projects, new RegExp(`title: '${title}'`))
   assert.match(projects, /projectType: 'professional'/)
   assert.match(projects, /company: 'Fusion Solution Co\., Ltd\.'/)
   for (const title of ['ERP System', 'CIINLV POS System', 'Social Discovery', 'Moneta Digital Wallet']) assert.match(projects, new RegExp(`title: '${title}'`))
@@ -40,6 +40,13 @@ test('professional WordPress projects remain separate from personal software pro
   assert.match(migration, /project_type/)
   assert.match(migration, /company_name/)
   assert.match(migration, /contributions/)
+  const projectSync = await read('backend/database/migrations/2026_11_11_000254_sync_wordpress_project_names.php')
+  assert.match(projectSync, /attendent/)
+  assert.match(projectSync, /F-Tech Solution/)
+  for (const url of ['https:\/\/www\.fusionsol\.com\/', 'https:\/\/www\.jarvizapp\.com\/', 'https:\/\/f-techsolution\.com\/', 'https:\/\/www\.thetysmyanmar\.com\/']) assert.match(projects, new RegExp(`liveUrl: '${url}'`))
+  assert.match(projects, /const professionalCaseStudy/)
+  const details = await read('src/pages/ProjectDetailPage.tsx')
+  assert.match(details, /const project = remoteProject \|\| staticProject/)
 })
 
 test('removed security skills are absent from the public skill catalog', async () => {
