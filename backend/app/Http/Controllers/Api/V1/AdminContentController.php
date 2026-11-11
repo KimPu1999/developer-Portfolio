@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CertificationRequest;
 use App\Http\Requests\EducationRequest;
+use App\Http\Requests\ExperienceRequest;
 use App\Models\Certification;
 use App\Models\EducationRecord;
 use App\Models\ExperienceEntry;
@@ -74,10 +75,26 @@ class AdminContentController extends Controller
     }
 
     public function experience(): JsonResponse { return response()->json(['experience' => ExperienceEntry::orderBy('display_order')->get()]); }
-    public function saveExperience(Request $request, ?ExperienceEntry $experience = null): JsonResponse
+    public function saveExperience(ExperienceRequest $request, ?ExperienceEntry $experience = null): JsonResponse
     {
-        $data = $request->validate(['title' => ['required', 'string', 'max:180'], 'summary' => ['required', 'string', 'max:3000'], 'role' => ['nullable', 'string', 'max:180'], 'technologies' => ['array'], 'status' => ['required', 'string', 'max:80'], 'project_slug' => ['nullable', 'alpha_dash'], 'is_public' => ['boolean'], 'display_order' => ['integer', 'min:0']]);
-        $experience ??= new ExperienceEntry(); $experience->fill($data)->save(); $this->audit->record('experience.saved', $experience, [], $request); return response()->json(['experience' => $experience], $experience->wasRecentlyCreated ? 201 : 200);
+        $experience ??= new ExperienceEntry();
+        $experience->fill($request->validated())->save();
+        $this->audit->record('experience.saved', $experience, [], $request);
+        return response()->json(['experience' => $experience], $experience->wasRecentlyCreated ? 201 : 200);
+    }
+
+    public function deleteExperience(ExperienceEntry $experience, Request $request): JsonResponse
+    {
+        $this->audit->record('experience.deleted', $experience, [], $request);
+        $experience->delete();
+        return response()->json(['message' => 'Experience record deleted.']);
+    }
+
+    public function reorderExperience(Request $request): JsonResponse
+    {
+        $data = $request->validate(['items' => ['required', 'array'], 'items.*.id' => ['required', 'uuid'], 'items.*.display_order' => ['required', 'integer', 'min:0']]);
+        foreach ($data['items'] as $item) ExperienceEntry::whereKey($item['id'])->update(['display_order' => $item['display_order']]);
+        return response()->json(['message' => 'Experience order updated.']);
     }
 
     public function resume(): JsonResponse { return response()->json(['resume' => ResumeMetadata::query()->latest()->first()]); }

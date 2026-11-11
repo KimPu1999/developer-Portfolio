@@ -60,6 +60,11 @@ test('resume metadata points to the generated public PDF', async () => {
   const { stat } = await import('node:fs/promises')
   const pdf = await stat(resolve(root, 'public/resume/resume.pdf'))
   assert.ok(pdf.size > 0)
+  const pdfText = (await readFile(resolve(root, 'public/resume/resume.pdf'))).toString('latin1')
+  assert.match(pdfText, /PROFESSIONAL EXPERIENCE/)
+  assert.match(pdfText, /Fusion Solution Co\.?, Ltd\./)
+  assert.match(pdfText, /WordPress Developer/)
+  assert.match(pdfText, /3 years/)
 })
 
 test('verified profile contact details are wired without inventing social URLs', async () => {
@@ -70,6 +75,30 @@ test('verified profile contact details are wired without inventing social URLs',
   assert.match(profile, /value: 'Tamwe'/)
   assert.match(profile, /https:\/\/github\.com\/KimPu1999/)
   assert.match(profile, /https:\/\/www\.linkedin\.com\/in\/kim-pu-5189bb2ba\//)
+})
+
+test('professional WordPress experience is represented with supplied facts only', async () => {
+  const profile = await read('src/data/profile.ts')
+  const experience = await read('src/data/experience.ts')
+  assert.match(profile, /3 years of professional WordPress development experience/)
+  assert.match(profile, /more than 20 websites/)
+  assert.match(experience, /organization: 'Fusion Solution Co\., Ltd\.'/)
+  assert.match(experience, /title: 'WordPress Developer'/)
+  assert.match(experience, /duration: '3 years'/)
+  assert.match(experience, /Built custom WordPress themes/)
+  assert.match(experience, /responsibilities:/)
+  assert.doesNotMatch(experience, /employmentDates:/)
+})
+
+test('WordPress projects are API-driven and admin experience CRUD is protected', async () => {
+  const projects = await read('src/pages/ProjectsPage.tsx')
+  assert.match(projects, /publicProjects\(\)/)
+  assert.match(projects, /project\.category === 'WordPress'/)
+  const admin = await read('src/App.tsx')
+  assert.match(admin, /path="experience" element={<AdminExperiencePage \/>}/)
+  const routes = await read('backend/routes/api.php')
+  assert.match(routes, /deleteExperience/)
+  assert.match(routes, /experience\/reorder/)
 })
 
 test('security and crawl controls are present', async () => {

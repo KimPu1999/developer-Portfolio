@@ -42,7 +42,11 @@ export const skillGroups = [
   },
   {
     name: 'CMS', eyebrow: '05', description: 'Content management and responsive web delivery.',
-    skills: [{ name: 'WordPress', description: 'Content-managed websites and web publishing.' }],
+    skills: [
+      { name: 'WordPress', description: 'Content-managed websites and web publishing.' },
+      { name: 'Custom WordPress Theme Development', description: 'Personalized WordPress themes, layouts and website presentation.' },
+      { name: 'Responsive Web Design', description: 'Responsive website layouts for mobile, tablet and desktop screens.' },
+    ],
   },
   {
     name: 'Security', eyebrow: '06', description: 'Security-aware development principles and application concepts.',

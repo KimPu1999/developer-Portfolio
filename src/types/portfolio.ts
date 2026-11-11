@@ -66,6 +66,19 @@ export interface ExperienceItem {
   liveUrl?: string
 }
 
+export interface ProfessionalExperienceItem {
+  id: string
+  organization: string
+  location?: string
+  title: string
+  duration: string
+  employmentDates?: string
+  summary: string
+  responsibilities: string[]
+  achievements: string[]
+  technologies: string[]
+}
+
 export interface Certification {
   id: string
   name: string

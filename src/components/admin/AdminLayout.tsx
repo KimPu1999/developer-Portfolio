@@ -1,11 +1,11 @@
-import { BarChart3, LayoutDashboard, LogOut, Mail, Menu, PanelLeftClose, PanelLeftOpen, Settings2, Sparkles, UploadCloud, UserRound, X } from 'lucide-react'
+import { BarChart3, BriefcaseBusiness, LayoutDashboard, LogOut, Mail, Menu, PanelLeftClose, PanelLeftOpen, Settings2, Sparkles, UploadCloud, UserRound, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { adminLogout, adminMe } from '../../lib/api'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import type { Theme } from '../../types/portfolio'
 
-const links = [{ label: 'Overview', to: '/admin', icon: LayoutDashboard }, { label: 'Analytics', to: '/admin/analytics', icon: BarChart3 }, { label: 'Messages', to: '/admin/messages', icon: Mail }, { label: 'Projects', to: '/admin/projects', icon: Sparkles }, { label: 'Skills', to: '/admin/skills', icon: Settings2 }, { label: 'Profile', to: '/admin/profile', icon: UserRound }, { label: 'Content', to: '/admin/content', icon: Settings2 }, { label: 'Social links', to: '/admin/social-links', icon: Settings2 }, { label: 'Media', to: '/admin/media', icon: UploadCloud }]
+const links = [{ label: 'Overview', to: '/admin', icon: LayoutDashboard }, { label: 'Analytics', to: '/admin/analytics', icon: BarChart3 }, { label: 'Messages', to: '/admin/messages', icon: Mail }, { label: 'Projects', to: '/admin/projects', icon: Sparkles }, { label: 'Work experience', to: '/admin/experience', icon: BriefcaseBusiness }, { label: 'Skills', to: '/admin/skills', icon: Settings2 }, { label: 'Profile', to: '/admin/profile', icon: UserRound }, { label: 'Content', to: '/admin/content', icon: Settings2 }, { label: 'Social links', to: '/admin/social-links', icon: Settings2 }, { label: 'Media', to: '/admin/media', icon: UploadCloud }]
 
 export function AdminLayout({ theme, onThemeToggle }: { theme: Theme; onThemeToggle: () => void }) {
   const navigate = useNavigate(); const location = useLocation(); const [ready, setReady] = useState(false); const [mobileOpen, setMobileOpen] = useState(false); const [collapsed, setCollapsed] = useState(false)

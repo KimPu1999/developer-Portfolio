@@ -5,10 +5,10 @@ export const profile = {
   initials: 'TKP',
   role: 'Full-Stack Software Developer',
   subtitle: 'BCA Graduate | Cybersecurity Background',
-  summary: 'I build secure, reliable and user-friendly web applications across the frontend, backend and database layers. My interests sit at the intersection of practical product development and thoughtful application security.',
-  about: 'I am a Bachelor of Computer Applications (BCA) graduate with a background in Cybersecurity and a strong interest in full-stack web development. I work with frontend technologies, backend frameworks and relational databases to build modern software applications. My project work includes ERP, POS, Social Discovery and Digital Wallet platforms. I am interested in secure application development, scalable architecture and user-friendly digital solutions.',
+  summary: 'I am a Full-Stack Software Developer and WordPress Developer with 3 years of WordPress development experience, 20+ websites built and a strong interest in secure, maintainable web applications.',
+  about: 'I am a Bachelor of Computer Applications (BCA) graduate with a background in Cybersecurity and 3 years of professional WordPress development experience. I have developed more than 20 websites, built custom WordPress themes with personalized layouts and designs, and worked with HTML, CSS, JavaScript and PHP. I also work with React, Laravel and relational databases to build modern full-stack software applications. My project work includes ERP, POS, Social Discovery and Digital Wallet platforms.',
   careerObjective: 'To contribute as a Software Developer or Full-Stack Developer by applying my programming, database and cybersecurity knowledge to secure, reliable, scalable and user-friendly software solutions.',
-  focusAreas: ['Full-stack web development', 'Secure application development', 'Scalable architecture', 'User-friendly digital solutions'],
+  focusAreas: ['WordPress website development', 'Custom WordPress theme development', 'Full-stack web development', 'Secure application development', 'Responsive web design'],
   interests: ['Frontend and backend integration', 'Relational database design', 'Authentication and authorization', 'Real-world business systems'],
   contact: [
     { label: 'Email', value: 'kimpiang1999@gmail.com', href: 'mailto:kimpiang1999@gmail.com' },

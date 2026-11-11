@@ -3,6 +3,7 @@ import { profile } from './profile'
 import { projects } from './projects'
 import { skillGroups } from './skills'
 import { certifications } from './certifications'
+import { professionalExperience } from './experience'
 
 export const portfolio = {
   ...profile,
@@ -11,6 +12,7 @@ export const portfolio = {
   certifications,
   skills: skillGroups,
   projects,
+  professionalExperience,
   contact: profile.contact,
 }
 

@@ -63,6 +63,8 @@ Route::prefix('v1')->group(function (): void {
         Route::get('/experience', [AdminContentController::class, 'experience']);
         Route::post('/experience', [AdminContentController::class, 'saveExperience']);
         Route::put('/experience/{experience}', [AdminContentController::class, 'saveExperience']);
+        Route::delete('/experience/{experience}', [AdminContentController::class, 'deleteExperience']);
+        Route::post('/experience/reorder', [AdminContentController::class, 'reorderExperience']);
         Route::get('/resume', [AdminContentController::class, 'resume']);
         Route::put('/resume', [AdminContentController::class, 'saveResume']);
         Route::post('/media', [MediaController::class, 'store']);

@@ -1,4 +1,4 @@
-export type ProjectCategory = 'Enterprise' | 'Retail' | 'Social' | 'Fintech'
+export type ProjectCategory = 'Enterprise' | 'Retail' | 'Social' | 'Fintech' | 'WordPress'
 export type ProjectStatus = 'In Development' | 'Concept'
 export type ProjectTechnology = string
 export type ProjectVisual = 'erp' | 'pos' | 'social' | 'wallet'

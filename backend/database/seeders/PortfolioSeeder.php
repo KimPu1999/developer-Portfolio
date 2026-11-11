@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\EducationRecord;
 use App\Models\Certification;
+use App\Models\ExperienceEntry;
 use App\Models\PersonalProfile;
 use App\Models\Project;
 use App\Models\Skill;
@@ -18,8 +19,8 @@ class PortfolioSeeder extends Seeder
         $profile = PersonalProfile::query()->first() ?? new PersonalProfile();
         $profile->fill([
             'display_name' => 'Thawng Kim Piang', 'email' => 'kimpiang1999@gmail.com', 'phone' => '09954060717', 'location' => 'Tamwe', 'initials' => 'TKP', 'role' => 'Full-Stack Software Developer', 'subtitle' => 'BCA Graduate | Cybersecurity Background',
-            'summary' => 'I build secure, reliable and user-friendly web applications across the frontend, backend and database layers.',
-            'about' => 'I am a Bachelor of Computer Applications (BCA) graduate with a background in Cybersecurity and a strong interest in full-stack web development. I work with frontend technologies, backend frameworks and relational databases to build modern software applications. My project work includes ERP, POS, Social Discovery and Digital Wallet platforms.',
+            'summary' => 'I am a Full-Stack Software Developer and WordPress Developer with 3 years of WordPress development experience, 20+ websites built and a strong interest in secure, maintainable web applications.',
+            'about' => 'I am a Bachelor of Computer Applications (BCA) graduate with a background in Cybersecurity and 3 years of professional WordPress development experience. I have developed more than 20 websites, built custom WordPress themes with personalized layouts and designs, and worked with HTML, CSS, JavaScript and PHP. I also work with React, Laravel and relational databases to build modern full-stack software applications. My project work includes ERP, POS, Social Discovery and Digital Wallet platforms.',
             'career_objective' => 'To contribute as a Software Developer or Full-Stack Developer by applying my programming, database and cybersecurity knowledge to secure, reliable, scalable and user-friendly software solutions.',
             'focus_areas' => ['Full-stack web development', 'Secure application development', 'Scalable architecture', 'User-friendly digital solutions'],
             'interests' => ['Frontend and backend integration', 'Relational database design', 'Authentication and authorization'],
@@ -47,6 +48,15 @@ class PortfolioSeeder extends Seeder
 
         SocialLink::query()->updateOrCreate(['kind' => 'github'], ['label' => 'GitHub', 'url' => 'https://github.com/KimPu1999', 'is_enabled' => true, 'display_order' => 0]);
         SocialLink::query()->updateOrCreate(['kind' => 'linkedin'], ['label' => 'LinkedIn', 'url' => 'https://www.linkedin.com/in/kim-pu-5189bb2ba/', 'is_enabled' => true, 'display_order' => 1]);
+
+        ExperienceEntry::query()->updateOrCreate(['organization' => 'Fusion Solution Co., Ltd.', 'title' => 'WordPress Developer'], [
+            'duration' => '3 years',
+            'summary' => 'WordPress website development and custom theme development across more than 20 websites.',
+            'responsibilities' => ['Developed over 20 WordPress websites.', 'Built custom WordPress themes with personalized layouts and designs.', 'Developed responsive websites using HTML, CSS, JavaScript and PHP.', 'Worked on website frontend design and WordPress customization.'],
+            'achievements' => ['Created professional, maintainable website layouts.'],
+            'technologies' => ['WordPress', 'PHP', 'HTML', 'CSS', 'JavaScript', 'Responsive Web Design'],
+            'status' => 'Professional experience', 'experience_type' => 'professional', 'is_public' => true, 'display_order' => 0,
+        ]);
 
         $groups = [
             'Frontend' => ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS'],

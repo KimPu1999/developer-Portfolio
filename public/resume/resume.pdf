@@ -22,7 +22,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
 endobj
 8 0 obj
-<< /Length 5566 >>
+<< /Length 5556 >>
 stream
 0.043 0.071 0.125 rg 0 0 595 842 re f
 0.070 0.120 0.200 rg 0 0 176 842 re f
@@ -89,11 +89,11 @@ BT /F1 9.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 208.0 184.0 Tm (To contribute as a So
 BT /F1 9.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 208.0 170.0 Tm (Developer by applying programming, database and) Tj ET
 BT /F1 9.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 208.0 156.0 Tm (cybersecurity knowledge to secure, reliable, scalable) Tj ET
 BT /F1 9.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 208.0 142.0 Tm (and user-friendly software solutions.) Tj ET
-BT /F1 7.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 42.0 28.0 Tm (Portfolio resume | GitHub and LinkedIn details require personal profile URLs) Tj ET
+BT /F1 7.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 42.0 28.0 Tm (Portfolio resume | WordPress and full-stack development experience) Tj ET
 endstream
 endobj
 9 0 obj
-<< /Length 4329 >>
+<< /Length 5068 >>
 stream
 0.950 0.970 0.990 rg 0 0 595 842 re f
 0.043 0.071 0.125 rg 0 785 595 57 re f
@@ -114,32 +114,40 @@ BT /F2 9.5 Tf 0.100 0.380 0.860 rg 1 0 0 1 56.0 592.0 Tm (Mathematics) Tj ET
 BT /F2 9.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 320.0 609.0 Tm (Kalay University) Tj ET
 BT /F1 9 Tf 0.340 0.390 0.470 rg 1 0 0 1 320.0 592.0 Tm (Kalay, Myanmar) Tj ET
 BT /F2 8.5 Tf 0.100 0.380 0.860 rg 1 0 0 1 56.0 572.0 Tm (Academic level: Second Year) Tj ET
-BT /F1 8.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 320.0 572.0 Tm (Graduation status: Not confirmed) Tj ET
-BT /F2 9 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 540.0 Tm (PRACTICAL PROJECT PORTFOLIO) Tj ET
-0.220 0.740 0.970 rg 2 w 42 532 m 90 532 l S
-BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 515.0 Tm (Enterprise Resource Planning System) Tj ET
-BT /F2 8.5 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 501.0 Tm (Status: In Development) Tj ET
-BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 488.0 Tm (Business operations, purchasing, sales, inventory, accounting and administration.) Tj ET
-BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 476.0 Tm (Technologies: React, TypeScript, Laravel, PHP, PostgreSQL) Tj ET
-BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 454.0 Tm (Point of Sale System) Tj ET
-BT /F2 8.5 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 440.0 Tm (Status: In Development) Tj ET
-BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 427.0 Tm (Retail products, inventory, checkout workflows, reporting and multi-business administration.) Tj ET
-BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 415.0 Tm (Technologies: React, TypeScript, Laravel, PostgreSQL) Tj ET
-BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 393.0 Tm (Social Discovery Platform) Tj ET
-BT /F2 8.5 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 379.0 Tm (Status: In Development) Tj ET
-BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 366.0 Tm (Profiles, content discovery, connections and social interactions.) Tj ET
-BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 354.0 Tm (Technologies: React, TypeScript, Laravel, PostgreSQL) Tj ET
-BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 332.0 Tm (Digital Wallet Platform) Tj ET
-BT /F2 8.5 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 318.0 Tm (Status: In Development) Tj ET
-BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 305.0 Tm (Multi-currency wallet architecture, transaction management, authentication and) Tj ET
-BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 293.0 Tm (security-oriented design.) Tj ET
-BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 281.0 Tm (Technologies: React, TypeScript, Laravel, PostgreSQL) Tj ET
-BT /F2 9 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 259.0 Tm (CERTIFICATIONS) Tj ET
-0.220 0.740 0.970 rg 2 w 42 251 m 90 251 l S
-BT /F1 9.2 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 234.0 Tm (LCCI Level I | LCCI Level II | LCCI Level III | JavaScript Programming Certificate | C++) Tj ET
-BT /F1 9.2 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 221.0 Tm (Programming Certificate) Tj ET
-BT /F3 8.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 203.0 Tm (Issuer, dates, credential IDs and certificate files are pending verification. No issuer is) Tj ET
-BT /F3 8.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 190.0 Tm (inferred for the LCCI records.) Tj ET
+BT /F1 8.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 320.0 576.0 Tm (Graduation status:) Tj ET
+BT /F1 8.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 320.0 564.0 Tm (Not confirmed) Tj ET
+BT /F2 9 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 530.0 Tm (PROFESSIONAL EXPERIENCE) Tj ET
+0.220 0.740 0.970 rg 2 w 42 522 m 160 522 l S
+BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 505.0 Tm (WordPress Developer) Tj ET
+BT /F2 9.2 Tf 0.100 0.380 0.860 rg 1 0 0 1 42.0 491.0 Tm (Fusion Solution Co., Ltd. | 3 years) Tj ET
+BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 477.0 Tm (Developed over 20 WordPress websites.) Tj ET
+BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 464.0 Tm (Built custom WordPress themes with personalized layouts and designs.) Tj ET
+BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 451.0 Tm (Responsive development: HTML, CSS, JavaScript and PHP) Tj ET
+BT /F2 9 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 415.0 Tm (PRACTICAL PROJECT PORTFOLIO) Tj ET
+0.220 0.740 0.970 rg 2 w 42 407 m 90 407 l S
+BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 390.0 Tm (Enterprise Resource Planning System) Tj ET
+BT /F2 8.5 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 376.0 Tm (Status: In Development) Tj ET
+BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 363.0 Tm (Business operations, purchasing, sales, inventory, accounting and administration.) Tj ET
+BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 351.0 Tm (Technologies: React, TypeScript, Laravel, PHP, PostgreSQL) Tj ET
+BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 329.0 Tm (Point of Sale System) Tj ET
+BT /F2 8.5 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 315.0 Tm (Status: In Development) Tj ET
+BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 302.0 Tm (Retail products, inventory, checkout workflows, reporting and multi-business administration.) Tj ET
+BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 290.0 Tm (Technologies: React, TypeScript, Laravel, PostgreSQL) Tj ET
+BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 268.0 Tm (Social Discovery Platform) Tj ET
+BT /F2 8.5 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 254.0 Tm (Status: In Development) Tj ET
+BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 241.0 Tm (Profiles, content discovery, connections and social interactions.) Tj ET
+BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 229.0 Tm (Technologies: React, TypeScript, Laravel, PostgreSQL) Tj ET
+BT /F2 10.5 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 207.0 Tm (Digital Wallet Platform) Tj ET
+BT /F2 8.5 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 193.0 Tm (Status: In Development) Tj ET
+BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 180.0 Tm (Multi-currency wallet architecture, transaction management, authentication and) Tj ET
+BT /F1 8.8 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 168.0 Tm (security-oriented design.) Tj ET
+BT /F3 8.2 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 156.0 Tm (Technologies: React, TypeScript, Laravel, PostgreSQL) Tj ET
+BT /F2 9 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 134.0 Tm (CERTIFICATIONS) Tj ET
+0.220 0.740 0.970 rg 2 w 42 126 m 90 126 l S
+BT /F1 9.2 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 109.0 Tm (LCCI Level I | LCCI Level II | LCCI Level III | JavaScript Programming Certificate | C++) Tj ET
+BT /F1 9.2 Tf 0.080 0.110 0.170 rg 1 0 0 1 42.0 96.0 Tm (Programming Certificate) Tj ET
+BT /F3 8.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 78.0 Tm (Issuer, dates, credential IDs and certificate files are pending verification. No issuer is) Tj ET
+BT /F3 8.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 65.0 Tm (inferred for the LCCI records.) Tj ET
 0.760 0.810 0.870 rg 0.7 w 42 32 m 553 32 l S
 BT /F1 7.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 42.0 18.0 Tm (Full-Stack Software Developer Portfolio) Tj ET
 BT /F1 7.5 Tf 0.340 0.390 0.470 rg 1 0 0 1 470.0 18.0 Tm (Resume) Tj ET
@@ -156,9 +164,9 @@ xref
 0000000516 00000 n 
 0000000618 00000 n 
 0000000723 00000 n 
-0000006341 00000 n 
+0000006331 00000 n 
 trailer
 << /Size 10 /Root 1 0 R >>
 startxref
-10722
+11696
 %%EOF
