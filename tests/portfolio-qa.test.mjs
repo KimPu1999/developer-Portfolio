@@ -144,6 +144,16 @@ test('verified profile contact details are wired without inventing social URLs',
   assert.match(profile, /https:\/\/www\.linkedin\.com\/in\/kim-pu-5189bb2ba\//)
 })
 
+test('contact form uses FormSubmit email delivery without the Laravel contact API', async () => {
+  const contact = await read('src/pages/ContactPage.tsx')
+  const formSubmit = await read('src/lib/formSubmit.ts')
+  assert.match(contact, /sendContactEmail/)
+  assert.match(formSubmit, /https:\/\/formsubmit\.co\/ajax\//)
+  assert.match(formSubmit, /_honey/)
+  assert.match(formSubmit, /isAccepted/)
+  assert.doesNotMatch(contact, /sendContact\(/)
+})
+
 test('professional WordPress experience is represented with supplied facts only', async () => {
   const profile = await read('src/data/profile.ts')
   const experience = await read('src/data/experience.ts')

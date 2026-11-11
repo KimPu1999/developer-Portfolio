@@ -1,12 +1,26 @@
 import type { AdminDashboard, AdminMessage, AdminUser, ApiProject, ContactPayload } from '../types/api'
 
-const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1').replace(/\/$/, '')
+// Use the Vite proxy during local development. Production deployments should
+// set VITE_API_URL to the public Laravel API origin ending in /api/v1.
+const apiBase = (import.meta.env.VITE_API_URL?.trim() || '/api/v1').replace(/\/$/, '')
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const response = await fetch(`${apiBase}${path}`, { credentials: 'include', headers: { Accept: 'application/json', 'Content-Type': 'application/json', ...(options.headers || {}) }, ...options })
-  const body = await response.json().catch(() => ({}))
-  if (!response.ok) throw new Error(body.message || 'The request could not be completed.')
-  return body as T
+  try {
+    const response = await fetch(`${apiBase}${path}`, { credentials: 'include', headers: { Accept: 'application/json', 'Content-Type': 'application/json', ...(options.headers || {}) }, ...options })
+    const body = await response.json().catch(() => ({}))
+    if (!response.ok) {
+      if (response.status >= 500) {
+        throw new Error(`The contact service is unavailable right now (HTTP ${response.status}). Please start the Laravel API or try again later.`)
+      }
+      throw new Error(body.message || `The request could not be completed (HTTP ${response.status}).`)
+    }
+    return body as T
+  } catch (error) {
+    if (error instanceof TypeError) {
+      throw new Error('The contact service is unavailable. Please start the Laravel API or try again later.')
+    }
+    throw error
+  }
 }
 
 export function sendContact(payload: ContactPayload) {

@@ -9,6 +9,26 @@ npm install
 npm run dev
 ```
 
+The contact form uses FormSubmit's cross-origin AJAX endpoint and does not
+require the Laravel backend. On the first submission, FormSubmit sends an
+activation email to the configured recipient; click that confirmation link
+before expecting messages to arrive.
+
+The optional Laravel API can still be started in a second terminal for the
+admin and database-backed portfolio features:
+
+```bash
+cd backend
+touch database/database.sqlite
+composer install
+php artisan migrate --seed
+php artisan serve
+```
+
+During local development, Vite proxies `/api` and `/sanctum` to
+`http://localhost:8000`. For a separately hosted API, create a frontend
+`.env.local` file with `VITE_API_URL=https://your-api.example.com/api/v1`.
+
 ## Verify a production build
 
 ```bash
@@ -39,7 +59,7 @@ The theme uses the system preference on the first visit and stores later choices
 
 The `backend/` directory contains an additive Laravel 13 API with Sanctum-ready session authentication, PostgreSQL migrations, public project/profile endpoints, contact message persistence, rate limiting, queued notification wiring, audit records and protected admin routes. See [`backend/README.md`](backend/README.md) for setup, provisioning, queue and security instructions.
 
-The frontend uses `VITE_API_URL` for the API base URL and keeps the public static content as the intentional fallback until a backend environment is configured. Contact submissions require the API; errors are surfaced to the visitor instead of being silently discarded.
+The frontend uses `VITE_API_URL` for the optional API base URL and keeps the public static content as the intentional fallback until a backend environment is configured. Contact submissions use the configured email in [`src/data/profile.ts`](src/data/profile.ts) through FormSubmit's AJAX endpoint.
 
 ## Phase 5 production preparation
 
