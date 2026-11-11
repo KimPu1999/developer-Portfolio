@@ -65,6 +65,11 @@ test('resume metadata points to the generated public PDF', async () => {
   assert.match(pdfText, /Fusion Solution Co\.?, Ltd\./)
   assert.match(pdfText, /WordPress Developer/)
   assert.match(pdfText, /3 years/)
+  assert.equal((pdfText.match(/\/Subtype \/Link/g) ?? []).length, 4)
+  assert.match(pdfText, /mailto:kimpiang1999@gmail\.com/)
+  assert.match(pdfText, /tel:\+959954060717/)
+  assert.match(pdfText, /https:\/\/github\.com\/KimPu1999/)
+  assert.match(pdfText, /https:\/\/www\.linkedin\.com\/in\/kim-pu-5189bb2ba\//)
 })
 
 test('verified profile contact details are wired without inventing social URLs', async () => {
