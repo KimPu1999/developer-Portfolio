@@ -24,6 +24,11 @@ body { margin: 0; min-width: 320px; background: #fff; }
 .dark .visual-social { background: linear-gradient(140deg, #422542, #263253 55%, #312a4d); }
 .visual-wallet { background: linear-gradient(140deg, #fef3c7, #ffedd5 55%, #e0f2fe); }
 .dark .visual-wallet { background: linear-gradient(140deg, #443318, #3b2a26 55%, #183749); }
+.visual-wordpress { background: #f0f9ff; }
+.dark .visual-wordpress { background: #102a43; }
+.visual-wordpress .visual-window { transform: rotate(2deg); background: rgba(255,255,255,.78); }
+.dark .visual-wordpress .visual-window { background: rgba(7, 24, 42, .78); }
+.visual-wordpress .visual-orb { border-radius: 50%; background: #38bdf8; transform: rotate(0); }
 .visual-window { position: absolute; left: 12%; top: 22%; width: 61%; height: 55%; border: 1px solid rgba(15, 23, 42, .15); border-radius: 12px; background: rgba(255,255,255,.68); padding: 14px; box-shadow: 16px 18px 40px rgba(15, 23, 42, .12); transform: rotate(-3deg); }
 .dark .visual-window { border-color: rgba(148,163,184,.18); background: rgba(15,23,42,.65); }
 .visual-dots { display: flex; gap: 4px; }.visual-dots i { width: 5px; height: 5px; border-radius: 50%; background: #94a3b8; }.visual-dots i:first-child { background: #38bdf8; }

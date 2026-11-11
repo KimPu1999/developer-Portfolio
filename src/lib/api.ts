@@ -42,6 +42,12 @@ export function publicProject(slug: string) { return request<ApiProject>('/proje
 export function createAdminProject(payload: Record<string, unknown>) { return request<{ data: ApiProject }>('/admin/projects', { method: 'POST', body: JSON.stringify(payload) }) }
 export function updateAdminProject(id: string, payload: Record<string, unknown>) { return request<{ data: ApiProject }>(`/admin/projects/${id}`, { method: 'PUT', body: JSON.stringify(payload) }) }
 export function deleteAdminProject(id: string) { return request<{ message: string }>(`/admin/projects/${id}`, { method: 'DELETE' }) }
+export async function uploadAdminProjectImage(id: string, file: File, alt: string, caption: string, isPublic: boolean) {
+  const body = new FormData(); body.append('file', file); body.append('alt', alt); if (caption) body.append('caption', caption); body.append('is_public', String(isPublic))
+  const response = await fetch(`${apiBase}/admin/projects/${id}/images`, { method: 'POST', credentials: 'include', headers: { Accept: 'application/json' }, body })
+  const data = await response.json().catch(() => ({})); if (!response.ok) throw new Error(data.message || 'The project image upload could not be completed.'); return data as { image: import('../types/api').ApiProjectImage }
+}
+export function deleteAdminProjectImage(projectId: string, imageId: string) { return request<{ message: string }>(`/admin/projects/${projectId}/images/${imageId}`, { method: 'DELETE' }) }
 export function adminSkills() { return request<{ categories: Array<{ id: string; name: string; skills: Array<{ id: string; name: string; description?: string }> }> }>('/admin/skills') }
 export function createAdminSkill(payload: Record<string, unknown>) { return request<{ skill: { id: string } }>('/admin/skills', { method: 'POST', body: JSON.stringify(payload) }) }
 export function updateAdminProfile(payload: Record<string, unknown>) { return request<{ profile: Record<string, unknown> }>('/admin/profile', { method: 'PUT', body: JSON.stringify(payload) }) }

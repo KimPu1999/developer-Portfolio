@@ -11,11 +11,11 @@ class Project extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $fillable = ['slug', 'title', 'short_title', 'category', 'description', 'status', 'overview', 'problem', 'objectives', 'solution', 'development_approach', 'technical_architecture', 'planned_modules', 'challenges', 'outcomes', 'lessons_learned', 'visual_key', 'image_path', 'image_alt', 'github_url', 'live_url', 'is_featured', 'is_published', 'display_order'];
+    protected $fillable = ['slug', 'title', 'short_title', 'category', 'project_type', 'company_name', 'role', 'contributions', 'description', 'status', 'overview', 'problem', 'objectives', 'solution', 'development_approach', 'technical_architecture', 'planned_modules', 'challenges', 'outcomes', 'lessons_learned', 'visual_key', 'image_path', 'image_alt', 'github_url', 'live_url', 'is_featured', 'is_published', 'display_order'];
 
     protected function casts(): array
     {
-        return ['objectives' => 'array', 'planned_modules' => 'array', 'challenges' => 'array', 'is_featured' => 'boolean', 'is_published' => 'boolean'];
+        return ['objectives' => 'array', 'planned_modules' => 'array', 'challenges' => 'array', 'contributions' => 'array', 'is_featured' => 'boolean', 'is_published' => 'boolean'];
     }
 
     public function technologies(): HasMany

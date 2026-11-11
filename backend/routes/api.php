@@ -43,6 +43,8 @@ Route::prefix('v1')->group(function (): void {
         Route::get('/messages/{message}', [AdminMessageController::class, 'show']);
         Route::patch('/messages/{message}/status', [AdminMessageController::class, 'updateStatus']);
         Route::apiResource('/projects', AdminProjectController::class);
+        Route::post('/projects/{project}/images', [MediaController::class, 'storeProjectImage']);
+        Route::delete('/projects/{project}/images/{image}', [MediaController::class, 'deleteProjectImage']);
         Route::get('/skills', [AdminSkillController::class, 'index']);
         Route::post('/skills', [AdminSkillController::class, 'store']);
         Route::patch('/skills/{skill}', [AdminSkillController::class, 'update']);

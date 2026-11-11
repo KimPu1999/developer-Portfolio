@@ -29,6 +29,19 @@ test('public project data does not claim completed project status', async () => 
   assert.match(projects, /status:\s*'In Development'/)
 })
 
+test('professional WordPress projects remain separate from personal software projects', async () => {
+  const projects = await read('src/data/projects.ts')
+  for (const title of ['FusionSol', 'Thetys Myanmar', 'Jarviz', 'F-Tech']) assert.match(projects, new RegExp(`title: '${title}'`))
+  assert.match(projects, /projectType: 'professional'/)
+  assert.match(projects, /company: 'Fusion Solution Co\., Ltd\.'/)
+  for (const title of ['ERP System', 'CIINLV POS System', 'Social Discovery', 'Moneta Digital Wallet']) assert.match(projects, new RegExp(`title: '${title}'`))
+  assert.match(projects, /projectType: 'personal'/)
+  const migration = await read('backend/database/migrations/2026_11_11_000250_extend_projects_for_professional_showcase.php')
+  assert.match(migration, /project_type/)
+  assert.match(migration, /company_name/)
+  assert.match(migration, /contributions/)
+})
+
 test('education and certification records preserve supplied academic status', async () => {
   const education = await read('src/data/education.ts')
   assert.match(education, /title:\s*'Bachelor of Computer Applications \(BCA\)'/)

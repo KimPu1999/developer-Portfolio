@@ -10,7 +10,7 @@ class ProjectImage extends Model
 {
     use HasUuids;
 
-    protected $fillable = ['project_id', 'path', 'alt', 'caption', 'display_order'];
+    protected $fillable = ['project_id', 'path', 'disk', 'alt', 'caption', 'display_order'];
 
     public function project(): BelongsTo
     {
