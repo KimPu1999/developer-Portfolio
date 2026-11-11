@@ -7,7 +7,7 @@ endobj
 << /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R /F3 7 0 R >> >> /Contents 8 0 R /Annots [10 0 R 11 0 R 12 0 R 13 0 R] >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R /F3 7 0 R >> >> /Contents 8 0 R /Annots [10 0 R 11 0 R 12 0 R 13 0 R 14 0 R] >>
 endobj
 4 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R /F3 7 0 R >> >> /Contents 9 0 R >>
@@ -22,7 +22,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
 endobj
 8 0 obj
-<< /Length 5556 >>
+<< /Length 5602 >>
 stream
 0.043 0.071 0.125 rg 0 0 595 842 re f
 0.070 0.120 0.200 rg 0 0 176 842 re f
@@ -40,7 +40,7 @@ BT /F2 7.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 42.0 542.0 Tm (GITHUB) Tj ET
 BT /F1 8.7 Tf 0.960 0.980 1.000 rg 1 0 0 1 42.0 530.0 Tm (github.com/KimPu1999) Tj ET
 BT /F2 7.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 42.0 508.0 Tm (LINKEDIN) Tj ET
 BT /F1 8.7 Tf 0.960 0.980 1.000 rg 1 0 0 1 42.0 496.0 Tm (linkedin.com/in/kim-pu-5189bb2ba) Tj ET
-BT /F1 8.7 Tf 0.960 0.980 1.000 rg 1 0 0 1 42.0 484.0 Tm () Tj ET
+BT /F1 8.7 Tf 0.960 0.980 1.000 rg 1 0 0 1 42.0 484.0 Tm (Portfolio website) Tj ET
 BT /F2 7.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 42.0 462.0 Tm (LOCATION) Tj ET
 BT /F1 8.7 Tf 0.960 0.980 1.000 rg 1 0 0 1 42.0 450.0 Tm (Tamwe) Tj ET
 BT /F2 9 Tf 0.220 0.740 0.970 rg 1 0 0 1 42.0 428.0 Tm (FOCUS) Tj ET
@@ -87,7 +87,7 @@ BT /F1 9.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 208.0 184.0 Tm (To contribute as a So
 BT /F1 9.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 208.0 170.0 Tm (Developer by applying programming, database and) Tj ET
 BT /F1 9.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 208.0 156.0 Tm (cybersecurity knowledge to secure, reliable, scalable) Tj ET
 BT /F1 9.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 208.0 142.0 Tm (and user-friendly software solutions.) Tj ET
-BT /F1 7.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 42.0 28.0 Tm (Portfolio resume | WordPress and full-stack development experience) Tj ET                                                                                                                                                                                              
+BT /F1 7.5 Tf 0.640 0.700 0.780 rg 1 0 0 1 42.0 28.0 Tm (Portfolio resume | WordPress and full-stack development experience) Tj ET                                                                                                                                                                                                                           
 endstream
 endobj
 9 0 obj
@@ -163,24 +163,28 @@ endobj
 13 0 obj
 << /Type /Annot /Subtype /Link /Rect [40 486 245 502] /Border [0 0 0] /A << /S /URI /URI (https://www.linkedin.com/in/kim-pu-5189bb2ba/) >> >>
 endobj
+14 0 obj
+<< /Type /Annot /Subtype /Link /Rect [40 474 160 490] /Border [0 0 0] /A << /S /URI /URI (https://developer-portfolio-one.netlify.app/) >> >>
+endobj
 xref
-0 14
+0 15
 0000000000 65535 f 
 0000000015 00000 n 
 0000000064 00000 n 
 0000000127 00000 n 
-0000000311 00000 n 
-0000000457 00000 n 
-0000000554 00000 n 
-0000000656 00000 n 
-0000000761 00000 n 
-0000006369 00000 n 
-0000011489 00000 n 
-0000011632 00000 n 
-0000011763 00000 n 
-0000011905 00000 n 
+0000000318 00000 n 
+0000000464 00000 n 
+0000000561 00000 n 
+0000000663 00000 n 
+0000000768 00000 n 
+0000006422 00000 n 
+0000011542 00000 n 
+0000011685 00000 n 
+0000011816 00000 n 
+0000011958 00000 n 
+0000012117 00000 n 
 trailer
-<< /Size 14 /Root 1 0 R >>
+<< /Size 15 /Root 1 0 R >>
 startxref
-12389
+12275
 %%EOF
