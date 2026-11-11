@@ -130,6 +130,8 @@ test('resume metadata points to the generated public PDF', async () => {
   assert.match(pdfText, /https:\/\/www\.linkedin\.com\/in\/kim-pu-5189bb2ba\//)
   assert.match(pdfText, /Portfolio website/)
   assert.match(pdfText, /https:\/\/developer-portfolio-one\.netlify\.app\//)
+  assert.match(pdfText, /\/Subtype \/Image/)
+  assert.match(pdfText, /\/Im1 15 0 R/)
 })
 
 test('verified profile contact details are wired without inventing social URLs', async () => {
