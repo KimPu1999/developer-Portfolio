@@ -8,6 +8,7 @@ use App\Models\PersonalProfile;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\SkillCategory;
+use App\Models\SocialLink;
 use Illuminate\Database\Seeder;
 
 class PortfolioSeeder extends Seeder
@@ -16,7 +17,7 @@ class PortfolioSeeder extends Seeder
     {
         $profile = PersonalProfile::query()->first() ?? new PersonalProfile();
         $profile->fill([
-            'display_name' => 'Your Name', 'initials' => 'YN', 'role' => 'Full-Stack Software Developer', 'subtitle' => 'BCA Graduate | Cybersecurity Background',
+            'display_name' => 'Thawng Kim Piang', 'email' => 'kimpiang1999@gmail.com', 'phone' => '09954060717', 'location' => 'Tamwe', 'initials' => 'TKP', 'role' => 'Full-Stack Software Developer', 'subtitle' => 'BCA Graduate | Cybersecurity Background',
             'summary' => 'I build secure, reliable and user-friendly web applications across the frontend, backend and database layers.',
             'about' => 'I am a Bachelor of Computer Applications (BCA) graduate with a background in Cybersecurity and a strong interest in full-stack web development. I work with frontend technologies, backend frameworks and relational databases to build modern software applications. My project work includes ERP, POS, Social Discovery and Digital Wallet platforms.',
             'career_objective' => 'To contribute as a Software Developer or Full-Stack Developer by applying my programming, database and cybersecurity knowledge to secure, reliable, scalable and user-friendly software solutions.',
@@ -43,6 +44,9 @@ class PortfolioSeeder extends Seeder
         foreach ($certifications as $order => $certificate) {
             Certification::query()->updateOrCreate(['name' => $certificate['name']], [...$certificate, 'description' => 'Certificate record supplied; issuer and credential details remain pending certificate verification.', 'display_order' => $order, 'is_public' => true, 'is_verified' => false]);
         }
+
+        SocialLink::query()->updateOrCreate(['kind' => 'github'], ['label' => 'GitHub', 'url' => 'https://github.com/KimPu1999', 'is_enabled' => true, 'display_order' => 0]);
+        SocialLink::query()->updateOrCreate(['kind' => 'linkedin'], ['label' => 'LinkedIn', 'url' => 'https://www.linkedin.com/in/kim-pu-5189bb2ba/', 'is_enabled' => true, 'display_order' => 1]);
 
         $groups = [
             'Frontend' => ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS'],

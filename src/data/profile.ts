@@ -1,8 +1,8 @@
 import type { Profile } from '../types/portfolio'
 
 export const profile = {
-  displayName: 'Your Name',
-  initials: 'YN',
+  displayName: 'Thawng Kim Piang',
+  initials: 'TKP',
   role: 'Full-Stack Software Developer',
   subtitle: 'BCA Graduate | Cybersecurity Background',
   summary: 'I build secure, reliable and user-friendly web applications across the frontend, backend and database layers. My interests sit at the intersection of practical product development and thoughtful application security.',
@@ -11,9 +11,10 @@ export const profile = {
   focusAreas: ['Full-stack web development', 'Secure application development', 'Scalable architecture', 'User-friendly digital solutions'],
   interests: ['Frontend and backend integration', 'Relational database design', 'Authentication and authorization', 'Real-world business systems'],
   contact: [
-    { label: 'Email', value: 'Add your email', href: undefined, placeholder: true },
-    { label: 'GitHub', value: 'Add your GitHub profile', href: undefined, placeholder: true },
-    { label: 'LinkedIn', value: 'Add your LinkedIn profile', href: undefined, placeholder: true },
-    { label: 'Location', value: 'Add your location', href: undefined, placeholder: true },
+    { label: 'Email', value: 'kimpiang1999@gmail.com', href: 'mailto:kimpiang1999@gmail.com' },
+    { label: 'Phone', value: '09954060717', href: 'tel:+959954060717' },
+    { label: 'GitHub', value: 'github.com/KimPu1999', href: 'https://github.com/KimPu1999' },
+    { label: 'LinkedIn', value: 'linkedin.com/in/kim-pu-5189bb2ba', href: 'https://www.linkedin.com/in/kim-pu-5189bb2ba/' },
+    { label: 'Location', value: 'Tamwe' },
   ],
 } satisfies Profile

@@ -14,7 +14,7 @@ class AdminProfileController extends Controller
 
     public function update(Request $request): JsonResponse
     {
-        $data = $request->validate(['display_name' => ['nullable', 'string', 'max:120'], 'initials' => ['nullable', 'string', 'max:8'], 'role' => ['nullable', 'string', 'max:120'], 'subtitle' => ['nullable', 'string', 'max:180'], 'summary' => ['nullable', 'string', 'max:2000'], 'about' => ['nullable', 'string', 'max:5000'], 'career_objective' => ['nullable', 'string', 'max:3000'], 'focus_areas' => ['array'], 'interests' => ['array']]);
+        $data = $request->validate(['display_name' => ['nullable', 'string', 'max:120'], 'email' => ['nullable', 'email', 'max:254'], 'phone' => ['nullable', 'string', 'max:40'], 'location' => ['nullable', 'string', 'max:180'], 'initials' => ['nullable', 'string', 'max:8'], 'role' => ['nullable', 'string', 'max:120'], 'subtitle' => ['nullable', 'string', 'max:180'], 'summary' => ['nullable', 'string', 'max:2000'], 'about' => ['nullable', 'string', 'max:5000'], 'career_objective' => ['nullable', 'string', 'max:3000'], 'focus_areas' => ['array'], 'interests' => ['array']]);
         $profile = PersonalProfile::query()->latest()->first() ?? new PersonalProfile();
         $profile->fill($data)->save();
         app(AuditService::class)->record('profile.updated', $profile, [], $request);

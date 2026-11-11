@@ -54,6 +54,24 @@ test('certificate actions are conditional on configured files and download permi
   assert.match(resources, /isDownloadable/)
 })
 
+test('resume metadata points to the generated public PDF', async () => {
+  const resume = await read('src/data/resume.ts')
+  assert.match(resume, /filePath: '\/resume\/resume\.pdf'/)
+  const { stat } = await import('node:fs/promises')
+  const pdf = await stat(resolve(root, 'public/resume/resume.pdf'))
+  assert.ok(pdf.size > 0)
+})
+
+test('verified profile contact details are wired without inventing social URLs', async () => {
+  const profile = await read('src/data/profile.ts')
+  assert.match(profile, /displayName: 'Thawng Kim Piang'/)
+  assert.match(profile, /kimpiang1999@gmail\.com/)
+  assert.match(profile, /09954060717/)
+  assert.match(profile, /value: 'Tamwe'/)
+  assert.match(profile, /https:\/\/github\.com\/KimPu1999/)
+  assert.match(profile, /https:\/\/www\.linkedin\.com\/in\/kim-pu-5189bb2ba\//)
+})
+
 test('security and crawl controls are present', async () => {
   const vercel = JSON.parse(await read('vercel.json'))
   const headers = vercel.headers.flatMap((entry) => entry.headers)
