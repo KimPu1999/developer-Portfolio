@@ -9,7 +9,7 @@ export const profile = {
   about: 'I am a Bachelor of Computer Applications (BCA) graduate who studied Cybersecurity and has 3 years of professional WordPress development experience. I have developed more than 20 websites, built custom WordPress themes with personalized layouts and designs, and worked with HTML, CSS, JavaScript and PHP. I also work with React, Laravel and relational databases to build modern full-stack software applications. My project work includes ERP, POS, Social Discovery and Digital Wallet platforms.',
   careerObjective: 'To contribute as a Software Developer or Full-Stack Developer by applying my programming, database and web development knowledge to reliable, scalable and user-friendly software solutions.',
   focusAreas: ['WordPress website development', 'Custom WordPress theme development', 'Full-stack web development', 'Secure application development', 'Responsive web design'],
-  interests: ['Frontend and backend integration', 'Relational database design', 'Authentication and authorization', 'Real-world business systems'],
+  interests: ['Frontend and backend integration', 'Relational database design', 'Real-world business systems'],
   contact: [
     { label: 'Email', value: 'kimpiang1999@gmail.com', href: 'mailto:kimpiang1999@gmail.com' },
     { label: 'Phone', value: '09954060717', href: 'tel:+959954060717' },

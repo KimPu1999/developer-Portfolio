@@ -23,7 +23,7 @@ class PortfolioSeeder extends Seeder
             'about' => 'I am a Bachelor of Computer Applications (BCA) graduate who studied Cybersecurity and has 3 years of professional WordPress development experience. I have developed more than 20 websites, built custom WordPress themes with personalized layouts and designs, and worked with HTML, CSS, JavaScript and PHP. I also work with React, Laravel and relational databases to build modern full-stack software applications. My project work includes ERP, POS, Social Discovery and Digital Wallet platforms.',
             'career_objective' => 'To contribute as a Software Developer or Full-Stack Developer by applying my programming, database and web development knowledge to reliable, scalable and user-friendly software solutions.',
             'focus_areas' => ['Full-stack web development', 'Secure application development', 'Scalable architecture', 'User-friendly digital solutions'],
-            'interests' => ['Frontend and backend integration', 'Relational database design', 'Authentication and authorization'],
+            'interests' => ['Frontend and backend integration', 'Relational database design', 'Real-world business systems'],
         ])->save();
 
         EducationRecord::query()->updateOrCreate(['title' => 'Bachelor of Computer Applications (BCA)'], [
@@ -63,7 +63,7 @@ class PortfolioSeeder extends Seeder
             'Backend' => ['PHP', 'Laravel', 'Node.js', 'REST API Development', 'Linux System'],
             'Programming' => ['C', 'C++', 'Java', 'Advanced Java Programming', 'Python', 'JavaScript', 'PHP'],
             'Databases' => ['MySQL', 'PostgreSQL', 'SQL'],
-            'CMS' => ['WordPress'],
+            'WordPress Developer' => ['WordPress'],
             'Security' => ['Web Application Security', 'Database Security'],
         ];
         foreach ($groups as $order => $names) {

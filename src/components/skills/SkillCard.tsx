@@ -1,7 +1,7 @@
 import { Braces, Code2, Database, Globe2, Server, ShieldCheck } from 'lucide-react'
 import type { Skill } from '../../types/portfolio'
 
-const icons = { Frontend: Code2, Backend: Server, Programming: Braces, Databases: Database, CMS: Globe2, Security: ShieldCheck }
+const icons = { Frontend: Code2, Backend: Server, Programming: Braces, Databases: Database, CMS: Globe2, 'WordPress Developer': Globe2, Security: ShieldCheck }
 
 export function SkillCard({ skill, category }: { skill: Skill; category: string }) {
   const Icon = icons[category as keyof typeof icons] ?? Code2

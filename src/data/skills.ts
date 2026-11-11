@@ -43,7 +43,7 @@ export const skillGroups = [
     ],
   },
   {
-    name: 'CMS', eyebrow: '05', description: 'Content management and responsive web delivery.',
+    name: 'WordPress Developer', eyebrow: '05', description: 'WordPress development, custom themes and responsive web delivery.',
     skills: [
       { name: 'WordPress', description: 'Content-managed websites and web publishing.' },
       { name: 'Custom WordPress Theme Development', description: 'Personalized WordPress themes, layouts and website presentation.' },

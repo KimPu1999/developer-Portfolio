@@ -55,6 +55,8 @@ test('professional WordPress projects remain separate from personal software pro
 test('removed security skills are absent from the public skill catalog', async () => {
   const skills = await read('src/data/skills.ts')
   for (const name of ['Cybersecurity Fundamentals', 'Authentication', 'Authorization', 'Secure Coding']) assert.doesNotMatch(skills, new RegExp(`name: '${name}'`))
+  const profile = await read('src/data/profile.ts')
+  assert.doesNotMatch(profile, /Authentication and authorization/)
   const migration = await read('backend/database/migrations/2026_11_11_000251_hide_removed_security_skills.php')
   assert.match(migration, /is_public.*false/)
 })
@@ -71,6 +73,13 @@ test('Linux System is listed in the backend skills', async () => {
   assert.match(skills, /name: 'Linux System'/)
   const seeder = await read('backend/database/seeders/PortfolioSeeder.php')
   assert.match(seeder, /'Linux System'/)
+})
+
+test('WordPress skill category is presented as WordPress Developer', async () => {
+  const skills = await read('src/data/skills.ts')
+  assert.match(skills, /name: 'WordPress Developer'/)
+  const migration = await read('backend/database/migrations/2026_11_11_000258_rename_cms_skill_category.php')
+  assert.match(migration, /WordPress Developer/)
 })
 
 test('education and certification records preserve supplied academic status', async () => {
@@ -109,6 +118,11 @@ test('resume metadata points to the generated public PDF', async () => {
   assert.match(pdfText, /Fusion Solution Co\.?, Ltd\./)
   assert.match(pdfText, /WordPress Developer/)
   assert.match(pdfText, /3 years/)
+  assert.match(pdfText, /\(WordPress Developer\)/)
+  assert.doesNotMatch(pdfText, /\(CMS\)/)
+  assert.doesNotMatch(pdfText, /Cybersecurity Fundamentals, Authentication/)
+  assert.doesNotMatch(pdfText, /Authorization, Secure Coding/)
+  assert.match(pdfText, /Web Application Security, Database Security/)
   assert.equal((pdfText.match(/\/Subtype \/Link/g) ?? []).length, 4)
   assert.match(pdfText, /mailto:kimpiang1999@gmail\.com/)
   assert.match(pdfText, /tel:\+959954060717/)
