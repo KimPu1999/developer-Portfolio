@@ -1,6 +1,6 @@
 :root {
   color-scheme: light;
-  --color-background: #f7f5f0;
+  --color-background: #f4f1eb;
   --color-surface: #ffffff;
   --color-surface-muted: #f0ede7;
   --color-surface-elevated: #ffffff;
@@ -22,6 +22,7 @@
   --color-dark-base: #151b16;
   --color-on-accent: #fffaf5;
   --color-on-dark: #f8f5ee;
+  --color-on-dark-muted: #c6c9c0;
   --shadow-soft: 0 12px 30px rgb(37 40 33 / 0.08);
   --shadow-card: 0 8px 24px rgb(37 40 33 / 0.06);
 }
@@ -50,6 +51,7 @@
   --color-dark-base: #0d120e;
   --color-on-accent: #21140f;
   --color-on-dark: #f4f1e9;
+  --color-on-dark-muted: #b8c0b5;
   --shadow-soft: 0 12px 30px rgb(0 0 0 / 0.22);
   --shadow-card: 0 8px 24px rgb(0 0 0 / 0.18);
 }
