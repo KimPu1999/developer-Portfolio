@@ -48,6 +48,10 @@ body { margin: 0; min-width: 320px; background: var(--color-background); color: 
 .site-footer .border-slate-200, .site-footer .border-slate-800 { border-color: color-mix(in srgb, var(--color-on-dark) 18%, transparent) !important; }
 .site-footer .text-slate-950, .site-footer .text-slate-900, .site-footer .text-slate-700 { color: var(--color-on-dark) !important; }
 .site-footer .text-slate-500, .site-footer .text-slate-400 { color: var(--color-on-dark-muted) !important; }
+.skills-preview-section { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.skills-preview-grid { box-shadow: 0 18px 40px color-mix(in srgb, var(--color-text) 5%, transparent); }
+.skills-preview-card { min-height: 160px; }
+.skills-preview-card:hover { background-color: color-mix(in srgb, var(--color-accent) 4%, var(--color-surface)) !important; }
 
 /* Existing utility classes now consume one accessible, centralized editorial palette. */
 .bg-white { background-color: var(--color-surface) !important; }
