@@ -18,7 +18,7 @@ function setMeta(name: string, content: string, property = false) {
 
 function absoluteUrl(path: string, siteUrl?: string) { return siteUrl ? new URL(path, siteUrl).toString() : path }
 
-export function PageMeta({ title, description, canonicalPath, image = '/og-placeholder.svg', noIndex = false, jsonLd }: PageMetaProps) {
+export function PageMeta({ title, description, canonicalPath, image = '/profile/tkp.png', noIndex = false, jsonLd }: PageMetaProps) {
   const location = useLocation()
   useEffect(() => {
     const siteUrl = import.meta.env.VITE_SITE_URL as string | undefined
