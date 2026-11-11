@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Model;
+
+class ExperienceEntry extends Model
+{
+    use HasUuids;
+
+    protected $fillable = ['title', 'summary', 'role', 'technologies', 'status', 'project_slug', 'is_public', 'display_order'];
+
+    protected function casts(): array
+    {
+        return ['technologies' => 'array', 'is_public' => 'boolean'];
+    }
+}

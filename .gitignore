@@ -1,0 +1,7 @@
+node_modules/
+dist/
+backend/vendor/
+backend/.env
+backend/storage/*.key
+backend/storage/app/public/
+.DS_Store

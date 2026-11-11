@@ -1,0 +1,6 @@
+import { ShieldCheck } from 'lucide-react'
+import type { Profile } from '../../types/portfolio'
+
+export function ProfileCard({ profile }: { profile: Profile }) {
+  return <div className="relative mx-auto w-full max-w-sm"><div className="absolute -inset-4 rounded-[2rem] bg-cyan-400/10 blur-2xl" /><div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-cyan-950/10 dark:border-slate-800 dark:bg-slate-900"><div className="profile-image flex aspect-[4/5] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-600 to-slate-950">{profile.image ? <img src={profile.image} alt={`${profile.displayName} profile`} loading="lazy" className="h-full w-full object-cover" /> : <span className="font-mono text-7xl font-medium text-white/90">{profile.initials}</span>}</div><div className="flex items-center justify-between gap-4 px-2 pb-2 pt-5"><div><p className="font-semibold text-slate-950 dark:text-white">{profile.displayName}</p><p className="mt-1 text-xs text-slate-500">{profile.role}</p></div><span className="grid h-9 w-9 place-items-center rounded-xl bg-cyan-400/10 text-cyan-500 dark:text-cyan-300" title="Security-aware development focus"><ShieldCheck size={18} /></span></div></div></div>
+}

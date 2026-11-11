@@ -1,0 +1,3 @@
+export function SkillCategoryTabs({ categories, active, onChange }: { categories: string[]; active: string; onChange: (category: string) => void }) {
+  return <div className="flex flex-wrap gap-2" role="tablist" aria-label="Skill categories">{categories.map((category) => <button key={category} type="button" role="tab" aria-selected={active === category} onClick={() => onChange(category)} className={`rounded-full px-4 py-2 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${active === category ? 'bg-cyan-400 text-slate-950' : 'border border-slate-300 text-slate-600 hover:border-cyan-400 hover:text-cyan-500 dark:border-slate-700 dark:text-slate-300'}`}>{category}</button>)}</div>
+}
