@@ -10,6 +10,7 @@ const links = [{ label: 'Overview', to: '/admin', icon: LayoutDashboard }, { lab
 export function AdminLayout({ theme, onThemeToggle }: { theme: Theme; onThemeToggle: () => void }) {
   const navigate = useNavigate(); const location = useLocation(); const [ready, setReady] = useState(false); const [mobileOpen, setMobileOpen] = useState(false); const [collapsed, setCollapsed] = useState(false)
   useEffect(() => { setMobileOpen(false); adminMe().then(() => setReady(true)).catch(() => navigate('/admin/login', { replace: true })) }, [location.pathname, navigate])
+  useEffect(() => { const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') setMobileOpen(false) }; window.addEventListener('keydown', onKeyDown); return () => window.removeEventListener('keydown', onKeyDown) }, [])
   useEffect(() => { document.title = 'Admin | Portfolio'; const robots = document.querySelector('meta[name="robots"]') ?? document.head.appendChild(Object.assign(document.createElement('meta'), { name: 'robots' })); robots.setAttribute('content', 'noindex,nofollow') }, [])
   async function logout() { await adminLogout().catch(() => undefined); navigate('/admin/login', { replace: true }) }
   if (!ready) return <div className="grid min-h-screen place-items-center bg-slate-950 text-slate-400">Checking admin session…</div>

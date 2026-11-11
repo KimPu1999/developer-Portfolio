@@ -44,3 +44,7 @@ The frontend uses `VITE_API_URL` for the API base URL and keeps the public stati
 ## Phase 5 production preparation
 
 Phase 5 adds consent-aware analytics storage/API, an admin analytics screen, route-level code splitting, SEO metadata and structured data hooks, sitemap generation, robots rules, Vercel configuration, Laravel security headers, `/api/health`, scheduled analytics aggregation, CI configuration and provider-neutral production documentation. See the files in [`docs/`](docs/) for deployment, domain, security, analytics, backup and release checklists.
+
+## Phase 6 quality gate
+
+Phase 6 adds the public Experience route, migration safety correction, CSP coverage, dialog accessibility improvements, static QA tests and launch-review documentation. The site is not marked launch-ready until Composer dependencies, isolated PostgreSQL tests, browser accessibility checks, production configuration and backup/rollback verification are complete. See [`docs/production-readiness.md`](docs/production-readiness.md) and [`docs/qa-report.md`](docs/qa-report.md).

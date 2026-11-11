@@ -6,7 +6,7 @@ import { ThemeToggle } from '../ui/ThemeToggle'
 import type { Theme } from '../../types/portfolio'
 import { MobileNavigation, type NavigationLink } from './MobileNavigation'
 
-const links: NavigationLink[] = [{ label: 'Home', to: '/' }, { label: 'About', to: '/about' }, { label: 'Skills', to: '/skills' }, { label: 'Projects', to: '/projects' }, { label: 'Education', to: '/education' }, { label: 'Certifications', to: '/certifications' }, { label: 'Resume', to: '/resume' }, { label: 'Contact', to: '/contact' }]
+const links: NavigationLink[] = [{ label: 'Home', to: '/' }, { label: 'About', to: '/about' }, { label: 'Skills', to: '/skills' }, { label: 'Projects', to: '/projects' }, { label: 'Experience', to: '/experience' }, { label: 'Education', to: '/education' }, { label: 'Certifications', to: '/certifications' }, { label: 'Resume', to: '/resume' }, { label: 'Contact', to: '/contact' }]
 
 export function Header({ theme, onThemeToggle }: { theme: Theme; onThemeToggle: () => void }) {
   const [open, setOpen] = useState(false)

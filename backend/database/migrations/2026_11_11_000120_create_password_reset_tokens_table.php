@@ -1,21 +1,17 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('password_reset_tokens', function (Blueprint $table): void {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+        // The Laravel skeleton migration already creates this table.
+        // Keep this historical migration as a no-op so a clean install does not
+        // attempt to create the same table twice.
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('password_reset_tokens');
+        // The table belongs to the skeleton migration and must not be removed here.
     }
 };
