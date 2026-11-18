@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Check, ChevronLeft, ChevronRight, ClipboardCheck, Code2, RotateCcw, Send, Trophy } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Container } from '../components/ui/Container'
 import { PageMeta } from '../components/ui/PageMeta'
 import { exercises, miniProjects, quizzes } from '../data/practice'
@@ -8,11 +8,17 @@ import type { PracticeDifficulty } from '../types/practice'
 
 type Tab = 'exercise' | 'quiz' | 'project'
 export function PracticePage() {
+  const [searchParams] = useSearchParams()
+  const requestedSkill = searchParams.get('skill')
+  const skillSlug = requestedSkill === 'typescript' || requestedSkill === 'react' ? requestedSkill : 'javascript'
   const [tab, setTab] = useState<Tab>('exercise')
   const [level, setLevel] = useState<PracticeDifficulty>('Beginner')
-  const exercise = exercises.find((item) => item.difficulty === level) ?? exercises[0]
-  const quiz = quizzes.find((item) => item.difficulty === level) ?? quizzes[0]
-  const project = miniProjects.find((item) => item.difficulty === level) ?? miniProjects[0]
+  const skillExercises = exercises.filter((item) => item.skillSlug === skillSlug)
+  const skillQuizzes = quizzes.filter((item) => item.skillSlug === skillSlug)
+  const skillProjects = miniProjects.filter((item) => item.skillSlug === skillSlug)
+  const exercise = skillExercises.find((item) => item.difficulty === level) ?? skillExercises[0] ?? exercises[0]
+  const quiz = skillQuizzes.find((item) => item.difficulty === level) ?? skillQuizzes[0] ?? quizzes[0]
+  const project = skillProjects.find((item) => item.difficulty === level) ?? skillProjects[0] ?? miniProjects[0]
   const [code, setCode] = useState(exercise.starterCode)
   const [feedback, setFeedback] = useState('')
   const [question, setQuestion] = useState(0)
