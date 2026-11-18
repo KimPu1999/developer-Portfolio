@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Check, ChevronLeft, ChevronRight, ClipboardCheck, Code2, RotateCcw, Send, Trophy } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Container } from '../components/ui/Container'
@@ -10,7 +10,7 @@ type Tab = 'exercise' | 'quiz' | 'project'
 export function PracticePage() {
   const [searchParams] = useSearchParams()
   const requestedSkill = searchParams.get('skill')
-  const skillSlug = requestedSkill === 'typescript' || requestedSkill === 'react' ? requestedSkill : 'javascript'
+  const skillSlug = requestedSkill === 'typescript' || requestedSkill === 'react' || requestedSkill === 'tailwind-css' ? requestedSkill : 'javascript'
   const [tab, setTab] = useState<Tab>('exercise')
   const [level, setLevel] = useState<PracticeDifficulty>('Beginner')
   const skillExercises = exercises.filter((item) => item.skillSlug === skillSlug)
@@ -25,6 +25,12 @@ export function PracticePage() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
   const [checked, setChecked] = useState<string[]>([])
+  useEffect(() => {
+    setCode(exercise.starterCode)
+    setFeedback('')
+    setQuestion(0)
+    setChecked([])
+  }, [exercise.id, exercise.starterCode])
   const score = useMemo(() => quiz.questions.filter((item) => answers[item.id] === item.answer).length, [answers, quiz.questions])
   const submitExercise = () => setFeedback(code.includes('return') && code.includes('name') ? 'Your solution matches the visible requirements. Secure execution is not enabled for this language yet.' : 'Review the function requirements and try again.')
   const current = quiz.questions[question]
