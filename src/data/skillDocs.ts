@@ -7,7 +7,7 @@ export function skillSlug(name: string) {
 }
 
 const metadata: Record<string, Pick<SkillDocumentation, 'difficulty' | 'duration' | 'prerequisites' | 'objectives' | 'technologyInfo'>> = {
-  html5: { difficulty: 'Beginner', duration: '2–3 weeks', prerequisites: ['Basic computer literacy'], objectives: ['Build semantic page structure', 'Use accessible forms and landmarks', 'Organize content for maintainability'], technologyInfo: 'HTML describes the structure and meaning of web content.' },
+  html5: { difficulty: 'Beginner', duration: '8–10 weeks', prerequisites: ['Basic computer literacy'], objectives: ['Build valid semantic documents from the HTML Living Standard', 'Create accessible forms, media and landmarks', 'Organize production-ready markup for SEO, performance and security'], technologyInfo: 'HTML describes the structure and meaning of web content. Browser APIs, CSS and JavaScript add behavior and presentation around that document.' },
   css3: { difficulty: 'Beginner', duration: '3–4 weeks', prerequisites: ['HTML fundamentals'], objectives: ['Create responsive layouts', 'Use modern layout systems', 'Build reusable visual patterns'], technologyInfo: 'CSS controls presentation, layout and responsive behavior.' },
   javascript: { difficulty: 'Intermediate', duration: '6–8 weeks', prerequisites: ['HTML and CSS fundamentals'], objectives: ['Write clear application logic', 'Handle browser events and asynchronous work', 'Build maintainable features'], technologyInfo: 'JavaScript adds behavior to web interfaces and powers browser and server applications.' },
   typescript: { difficulty: 'Intermediate', duration: '4–6 weeks', prerequisites: ['JavaScript fundamentals'], objectives: ['Model application data with types', 'Catch common errors before runtime', 'Design safer APIs'], technologyInfo: 'TypeScript adds static typing and tooling to JavaScript.' },
@@ -17,7 +17,32 @@ const metadata: Record<string, Pick<SkillDocumentation, 'difficulty' | 'duration
 }
 
 const curriculum: Record<string, Record<'Beginner' | 'Intermediate' | 'Advanced' | 'Professional', string[]>> = {
-  html5: { Beginner: ['Basic syntax', 'Comments', 'Elements and attributes', 'Headings and paragraphs', 'Links and images'], Intermediate: ['Semantic HTML', 'Forms and validation', 'Tables and lists', 'Accessibility', 'Metadata and SEO'], Advanced: ['Responsive media', 'Web components', 'Embedded content', 'Performance', 'Security considerations'], Professional: ['Document architecture', 'Design-system markup', 'Testing and audits', 'Maintainable HTML'] },
+  html5: {
+    Beginner: [
+      'What HTML is and how browsers parse a document', 'DOCTYPE, character encoding and document structure', 'Tags, elements, attributes, nesting and comments', 'Entities, whitespace and text semantics',
+      'Document metadata: html, head, title, meta, link, style and base', 'Text content: h1–h6, p, br, hr, div, span and inline semantics', 'Emphasis and code: strong, em, b, i, u, small, mark, sub, sup, pre and code',
+      'Links: a, href, target, rel and download', 'Images: img, src, alt, width and height', 'Lists: ul, ol, li, dl, dt and dd', 'Global attributes: id, class, lang, dir, title, style and hidden'
+    ],
+    Intermediate: [
+      'Semantic page landmarks: header, nav, main, section, article, aside and footer', 'Supporting semantic elements: address, figure, figcaption, hgroup, search, details and summary',
+      'Tables: caption, colgroup, col, thead, tbody, tfoot, tr, th, td, scope, colspan and rowspan', 'Forms: form, label, input, button, select, option, optgroup and textarea',
+      'Form groups and output: fieldset, legend, datalist, output, progress and meter', 'Input types: text, password, email, number, tel, url, search, date, time, datetime-local, month, week, color, range, checkbox, radio, file, hidden, submit, reset, button and image',
+      'Form attributes: name, value, placeholder, required, disabled, readonly, checked, selected, multiple, min, max, step, pattern and autocomplete', 'Submission attributes: action, method, enctype, novalidate, accept and form',
+      'Media: audio, video, source, track, picture, iframe, embed, object, map and area', 'Responsive images with srcset, sizes, loading, decoding and fetchpriority'
+    ],
+    Advanced: [
+      'Advanced text semantics: blockquote, q, cite, abbr, dfn, time, data, del, ins, s, kbd, samp, var, bdi, bdo, ruby, rt, rp and wbr',
+      'Native interaction: dialog, details, summary, popover, popovertarget, popovertargetaction and inert', 'Constraint validation and native form submission behavior', 'GET and POST forms, autofill and form-associated elements',
+      'Responsive media art direction and accessible alternative sources', 'Metadata for viewport, description, robots, canonical URLs, favicons and social sharing',
+      'Semantic accessibility: headings, accessible names, labels, alt text, landmarks and keyboard focus', 'ARIA roles, states and properties: when native HTML is not enough', 'Accessible tables and error messages'
+    ],
+    Professional: [
+      'Semantic document architecture and landmark boundaries', 'Reusable, component-friendly markup and content organization', 'template, slot and custom elements integration',
+      'Web Components fundamentals and Declarative Shadow DOM', 'HTML parsing, DOM trees and native browser interactions', 'Complex accessible forms and server-side validation requirements',
+      'SEO architecture: titles, descriptions, headings, canonical metadata and structured data', 'Performance: preload, preconnect, lazy loading, dimensions and script loading strategies',
+      'Security: safe HTML rendering, iframe sandbox, rel=noopener, CSP and safe embeds', 'Validation, browser compatibility, accessibility audits and standards-based code review'
+    ]
+  },
   css3: { Beginner: ['Syntax and selectors', 'Comments and values', 'Colors and typography', 'Box model', 'Spacing and borders'], Intermediate: ['Flexbox', 'CSS Grid', 'Responsive design', 'Positioning', 'Forms and states'], Advanced: ['Custom properties', 'Transitions and animation', 'Container queries', 'Cascade layers', 'Performance'], Professional: ['CSS architecture', 'Design tokens', 'Accessibility', 'Component styling strategy'] },
   javascript: { Beginner: ['Variables and constants', 'Data types and conversion', 'Operators and expressions', 'Conditionals', 'Loops', 'Functions'], Intermediate: ['Arrays and collections', 'Objects', 'Scope and closures', 'Modules', 'Error handling'], Advanced: ['Recursion', 'Algorithms and complexity', 'Promises and async/await', 'Event loop', 'Testing'], Professional: ['API integration', 'Application architecture', 'Performance optimization', 'Security best practices'] },
   typescript: { Beginner: ['Annotations and inference', 'Primitive types', 'Arrays and tuples', 'Functions', 'Unions'], Intermediate: ['Interfaces', 'Type aliases', 'Narrowing', 'Generics', 'Modules'], Advanced: ['Utility types', 'Conditional types', 'Mapped types', 'Decorators', 'Async APIs'], Professional: ['Type-safe architecture', 'Public API design', 'Build configuration', 'Runtime validation'] },
@@ -79,4 +104,7 @@ function buildDocs(group: SkillGroup, skill: SkillDocumentation['skill']): Skill
 }
 
 export const skillDocumentation = skillGroups.flatMap((group) => group.skills.map((skill) => buildDocs(group, skill))).filter((doc, index, docs) => docs.findIndex((candidate) => candidate.slug === doc.slug) === index)
-export function getSkillDocumentation(slug: string) { return skillDocumentation.find((doc) => doc.slug === slug) }
+export function getSkillDocumentation(slug: string) {
+  const normalizedSlug = slug === 'html' ? 'html5' : slug
+  return skillDocumentation.find((doc) => doc.slug === normalizedSlug)
+}
