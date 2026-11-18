@@ -1,4 +1,4 @@
-export type PracticeDifficulty = 'Beginner' | 'Intermediate' | 'Advanced'
+export type PracticeDifficulty = 'Beginner' | 'Intermediate' | 'Advanced' | 'Professional'
 
 export interface CodingExercise {
   id: string
@@ -25,6 +25,6 @@ export interface QuizQuestion {
   explanation: string
 }
 
-export interface LearningQuiz { id: string; title: string; skillSlug: string; questions: QuizQuestion[] }
+export interface LearningQuiz { id: string; title: string; skillSlug: string; difficulty: PracticeDifficulty; questions: QuizQuestion[] }
 
 export interface MiniProject { id: string; title: string; skillSlug: string; description: string; difficulty: PracticeDifficulty; requirements: string[]; objectives: string[]; checklist: string[]; expectedOutput: string }

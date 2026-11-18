@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import { Container } from '../components/ui/Container'
 import { PageMeta } from '../components/ui/PageMeta'
 import { exercises, miniProjects, quizzes } from '../data/practice'
+import type { PracticeDifficulty } from '../types/practice'
 
 type Tab = 'exercise' | 'quiz' | 'project'
 export function PracticePage() {
   const [tab, setTab] = useState<Tab>('exercise')
-  const exercise = exercises[0]
-  const quiz = quizzes[0]
-  const project = miniProjects[0]
+  const [level, setLevel] = useState<PracticeDifficulty>('Beginner')
+  const exercise = exercises.find((item) => item.difficulty === level) ?? exercises[0]
+  const quiz = quizzes.find((item) => item.difficulty === level) ?? quizzes[0]
+  const project = miniProjects.find((item) => item.difficulty === level) ?? miniProjects[0]
   const [code, setCode] = useState(exercise.starterCode)
   const [feedback, setFeedback] = useState('')
   const [question, setQuestion] = useState(0)

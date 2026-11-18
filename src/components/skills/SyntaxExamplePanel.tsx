@@ -6,7 +6,7 @@ import type { SyntaxReferenceItem } from '../../data/syntaxReference'
 function safePreviewSource(item: SyntaxReferenceItem) {
   if (item.previewType === 'css') {
     const css = item.previewMarkup || item.exampleCode
-    return `<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:system-ui;padding:1.25rem;color:#172033} .preview-card{padding:1rem;border:1px solid #cbd5e1;border-radius:.75rem} ${css}</style></head><body><div class="preview-card"><p class="preview-text">Preview paragraph</p><div class="layout">Preview content</div></div></body></html>`
+    return `<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:system-ui;padding:1.25rem;color:#172033} .preview-card{padding:1rem;border:1px solid #cbd5e1;border-radius:.75rem} @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}} ${css}</style></head><body><div class="preview-card"><p class="preview-text">Preview paragraph</p><div class="layout">Preview content</div></div></body></html>`
   }
   if (item.previewType === 'html') {
     return `<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:system-ui;padding:1.25rem;color:#172033}img{max-width:100%}button{padding:.5rem .75rem}</style></head><body>${item.exampleCode.replace(/<script[\s\S]*?<\/script>/gi, '')}</body></html>`

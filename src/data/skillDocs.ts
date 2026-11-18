@@ -8,8 +8,8 @@ export function skillSlug(name: string) {
 
 const metadata: Record<string, Pick<SkillDocumentation, 'difficulty' | 'duration' | 'prerequisites' | 'objectives' | 'technologyInfo'>> = {
   html5: { difficulty: 'Beginner', duration: '8–10 weeks', prerequisites: ['Basic computer literacy'], objectives: ['Build valid semantic documents from the HTML Living Standard', 'Create accessible forms, media and landmarks', 'Organize production-ready markup for SEO, performance and security'], technologyInfo: 'HTML describes the structure and meaning of web content. Browser APIs, CSS and JavaScript add behavior and presentation around that document.' },
-  css3: { difficulty: 'Beginner', duration: '3–4 weeks', prerequisites: ['HTML fundamentals'], objectives: ['Create responsive layouts', 'Use modern layout systems', 'Build reusable visual patterns'], technologyInfo: 'CSS controls presentation, layout and responsive behavior.' },
-  javascript: { difficulty: 'Intermediate', duration: '6–8 weeks', prerequisites: ['HTML and CSS fundamentals'], objectives: ['Write clear application logic', 'Handle browser events and asynchronous work', 'Build maintainable features'], technologyInfo: 'JavaScript adds behavior to web interfaces and powers browser and server applications.' },
+  css3: { difficulty: 'Beginner', duration: '8–10 weeks', prerequisites: ['HTML fundamentals'], objectives: ['Write maintainable CSS with correct selectors, properties and values', 'Build responsive layouts with Flexbox, Grid and container queries', 'Create accessible, performant and progressively enhanced visual systems'], technologyInfo: 'CSS controls presentation, layout and responsive behavior. The browser applies CSS through the cascade, inheritance, specificity and layout algorithms.' },
+  javascript: { difficulty: 'Intermediate', duration: '12–16 weeks', prerequisites: ['HTML and CSS fundamentals'], objectives: ['Explain ECMAScript language rules and browser runtime behavior', 'Build accessible, asynchronous browser features with safe API usage', 'Design, test and optimize maintainable production JavaScript'], technologyInfo: 'JavaScript is the ECMAScript language plus a host environment. This path separates language features such as objects, promises and modules from browser APIs such as the DOM, Fetch and Web Storage.' },
   typescript: { difficulty: 'Intermediate', duration: '4–6 weeks', prerequisites: ['JavaScript fundamentals'], objectives: ['Model application data with types', 'Catch common errors before runtime', 'Design safer APIs'], technologyInfo: 'TypeScript adds static typing and tooling to JavaScript.' },
   react: { difficulty: 'Intermediate', duration: '5–7 weeks', prerequisites: ['JavaScript and ES modules'], objectives: ['Compose interfaces from components', 'Manage state and interactions', 'Build accessible UI flows'], technologyInfo: 'React is a component-based UI library driven by state and props.' },
   python: { difficulty: 'Beginner', duration: '5–7 weeks', prerequisites: ['Basic programming concepts'], objectives: ['Write clear Python programs', 'Work with collections and modules', 'Handle files and errors'], technologyInfo: 'Python is a readable general-purpose language used for automation, APIs and backend development.' },
@@ -43,8 +43,69 @@ const curriculum: Record<string, Record<'Beginner' | 'Intermediate' | 'Advanced'
       'Security: safe HTML rendering, iframe sandbox, rel=noopener, CSP and safe embeds', 'Validation, browser compatibility, accessibility audits and standards-based code review'
     ]
   },
-  css3: { Beginner: ['Syntax and selectors', 'Comments and values', 'Colors and typography', 'Box model', 'Spacing and borders'], Intermediate: ['Flexbox', 'CSS Grid', 'Responsive design', 'Positioning', 'Forms and states'], Advanced: ['Custom properties', 'Transitions and animation', 'Container queries', 'Cascade layers', 'Performance'], Professional: ['CSS architecture', 'Design tokens', 'Accessibility', 'Component styling strategy'] },
-  javascript: { Beginner: ['Variables and constants', 'Data types and conversion', 'Operators and expressions', 'Conditionals', 'Loops', 'Functions'], Intermediate: ['Arrays and collections', 'Objects', 'Scope and closures', 'Modules', 'Error handling'], Advanced: ['Recursion', 'Algorithms and complexity', 'Promises and async/await', 'Event loop', 'Testing'], Professional: ['API integration', 'Application architecture', 'Performance optimization', 'Security best practices'] },
+  css3: {
+    Beginner: [
+      'What CSS is and how the cascade works', 'Rulesets, declarations, properties, values and comments', 'Inline, internal and external stylesheets', 'Universal, element, class, ID and group selectors',
+      'Descendant and child combinators', 'Colors: names, hexadecimal, rgb(), rgba(), hsl(), hsla() and opacity', 'Typography: font family, size, weight, style, variant and line height',
+      'Text styling: alignment, decoration, transform, indentation, shadows, spacing and wrapping', 'Box model: width, height, margin, padding, borders, radius and box-sizing',
+      'Backgrounds: images, repeat, position, size and attachment', 'Display, visibility, overflow and CSS units'
+    ],
+    Intermediate: [
+      'Attribute selectors and sibling combinators', 'Interactive pseudo-classes: hover, focus, active, visited, checked, disabled and enabled', 'Structural pseudo-classes: first-child, last-child, nth-child() and not()',
+      'Pseudo-elements: before, after, first-letter, first-line, placeholder and selection', 'Positioning: static, relative, absolute, fixed, sticky, inset and z-index', 'Flexbox containers and axes',
+      'Flexbox sizing, ordering, alignment, wrapping and gaps', 'Grid tracks, areas, placement, auto-flow and minmax()', 'Responsive media queries, breakpoints, mobile-first and fluid layouts',
+      'Transforms and transform-origin', 'Transitions and timing functions'
+    ],
+    Advanced: [
+      'CSS functions: calc(), min(), max(), clamp(), var(), env(), attr() and color-mix()', 'Custom properties, fallbacks, inheritance and theming', 'Modern selectors: is(), where(), has(), focus-visible, focus-within, nth-of-type(), empty and target',
+      'Advanced Grid: subgrid, auto-fit, auto-fill, implicit tracks, explicit tracks and named lines', 'Animations: keyframes, timing, direction, fill mode, iteration and play state', 'Filters, drop-shadow, clipping, masks and blending',
+      'Scroll behavior, snap points, padding, margin and overscroll', 'Container queries, container types, names and query units', 'Advanced typography, intrinsic sizing and visual effects'
+    ],
+    Professional: [
+      'Cascade, specificity, inheritance, origins, layers and @layer', 'Scoped styles with @scope, CSS nesting and @property registration', 'Logical properties, writing modes and international layouts',
+      'Modern color spaces: lab(), lch(), oklab(), oklch(), color() and relative colors', 'Intrinsic layouts with subgrid, aspect-ratio, object-fit, min-content, max-content and fit-content',
+      'Fluid typography, container-based components and responsive design systems', 'Scroll-driven animations, view timelines, motion paths and animation composition', 'Performance: containment, content-visibility, will-change, layout and paint',
+      'Accessibility: reduced motion, color scheme, contrast, forced colors and focus indicators', 'Architecture: design tokens, BEM, CSS Modules, progressive enhancement, @supports and cross-browser testing'
+    ]
+  },
+  javascript: {
+    Beginner: [
+      'What JavaScript is, engines and runtime environments', 'Script loading with script, defer and async', 'Comments, statements, expressions and automatic semicolon insertion', 'Strict mode and the browser console',
+      'var, let and const declarations', 'Scope and hoisting fundamentals', 'Primitive values and reference values', 'string, number, bigint, boolean, undefined, null, symbol and object',
+      'typeof, type conversion, coercion, truthy and falsy values', 'Arithmetic, assignment, comparison and logical operators', 'Nullish coalescing, optional chaining and conditional expressions',
+      'String literals, template literals and string methods', 'Number, parseInt, parseFloat and Math methods', 'if, else, switch and conditional logic', 'for, while, do while, break and continue',
+      'Function declarations, expressions, parameters, arguments and return', 'Arrow functions and default parameters', 'Array literals, indexing, length and basic mutation', 'Object literals, properties, methods and property access',
+      'DOM selection, textContent and safe HTML boundaries', 'classList, addEventListener and click events', 'Beginner projects: counter, calculator, clock and form validation'
+    ],
+    Intermediate: [
+      'Callbacks, higher-order functions and lexical scope', 'Closures, this, call, apply and bind', 'Rest parameters, spread syntax, recursion and IIFEs',
+      'forEach, map, filter, reduce, find, some and every', 'sort, toSorted, reverse, toReversed, toSpliced, flat and flatMap', 'slice, splice, concat, join and array iterators',
+      'Object and array destructuring', 'Shorthand properties and computed property names', 'Object.assign, entries, fromEntries, freeze, seal and descriptors',
+      'Regular expressions and advanced string methods', 'Date, formatting and JSON serialization', 'DOM creation, insertion, attributes and traversal',
+      'Event objects, bubbling, capturing, delegation and cleanup', 'localStorage, sessionStorage, cookies and storage events', 'Timers, promises, then, catch and finally',
+      'async, await, fetch and response handling', 'try, catch, finally, throw and built-in error types', 'ES modules, named exports, default exports and dynamic import',
+      'Intermediate projects: to-do, weather, quiz, expense and search applications'
+    ],
+    Advanced: [
+      'Execution contexts, call stack and lexical environments', 'Scope chains, closures in depth, hoisting and the temporal dead zone', 'Event loop, task queues, microtasks and promise scheduling',
+      'Garbage collection fundamentals and memory ownership', 'Prototypes, prototype chains and Object.create', 'Constructor functions and class syntax',
+      'extends, super, static members, private fields, getters and setters', 'Inheritance, polymorphism and encapsulation', 'Property descriptors, defineProperty and prototype control',
+      'Reflect and Proxy', 'Symbol, BigInt, Map, Set, WeakMap and WeakSet', 'WeakRef, FinalizationRegistry, ArrayBuffer, DataView and typed arrays',
+      'Iterables, iterators, Symbol.iterator and generators', 'Async iterators, async generators and for await of', 'Promise combinators and Promise.withResolvers',
+      'AbortController, cancellation, concurrency, retry and timeout patterns', 'Fetch, Request, Response, Headers, URL, FormData, Blob and File', 'Streams, WebSocket, Workers and observer APIs',
+      'Regular expression groups, lookarounds, flags and Unicode matching', 'Pure functions, immutability, composition, currying and memoization',
+      'Advanced projects: chat client, data dashboard and custom state manager'
+    ],
+    Professional: [
+      'Modular architecture and separation of concerns', 'Factory, module, observer and strategy patterns', 'Dependency injection and practical SOLID principles',
+      'Maintainable code organization and API boundaries', 'Profiling, memory leaks, efficient DOM updates and main-thread responsiveness', 'Debouncing, throttling, lazy loading and code splitting',
+      'Dynamic imports, rendering performance and Web Workers', 'XSS prevention, safe DOM APIs and HTML sanitization', 'Content Security Policy, prototype pollution and input validation',
+      'Secure API requests, CORS, token handling and dependency security', 'Unit, integration and end-to-end testing', 'Mocks, test doubles, async tests, DOM tests and coverage',
+      'npm, package.json, bundlers, Vite, ESLint, Prettier and source maps', 'Environment configuration, dependency management and build optimization', 'REST API integration and authentication flow concepts',
+      'Error recovery, state management, accessibility and internationalization', 'Performance budgets, progressive enhancement and browser compatibility',
+      'Production projects: e-commerce frontend, modular SPA and analytics dashboard'
+    ]
+  },
   typescript: { Beginner: ['Annotations and inference', 'Primitive types', 'Arrays and tuples', 'Functions', 'Unions'], Intermediate: ['Interfaces', 'Type aliases', 'Narrowing', 'Generics', 'Modules'], Advanced: ['Utility types', 'Conditional types', 'Mapped types', 'Decorators', 'Async APIs'], Professional: ['Type-safe architecture', 'Public API design', 'Build configuration', 'Runtime validation'] },
   python: { Beginner: ['Basic syntax', 'Variables and types', 'Operators', 'Conditionals', 'Loops', 'Functions'], Intermediate: ['Lists and dictionaries', 'Comprehensions', 'Modules and packages', 'Exceptions', 'File handling'], Advanced: ['Classes and inheritance', 'Iterators and generators', 'Recursion', 'Async programming', 'Testing'], Professional: ['API development', 'Data access', 'Performance', 'Security and deployment'] },
   c: { Beginner: ['Program structure', 'Variables and types', 'Operators', 'Conditions', 'Loops', 'Functions'], Intermediate: ['Arrays and strings', 'Pointers', 'Structs', 'File handling', 'Headers'], Advanced: ['Dynamic memory', 'Function pointers', 'Data structures', 'Algorithms', 'Debugging'], Professional: ['Build systems', 'Memory safety', 'Performance', 'Secure systems programming'] },
@@ -105,6 +166,6 @@ function buildDocs(group: SkillGroup, skill: SkillDocumentation['skill']): Skill
 
 export const skillDocumentation = skillGroups.flatMap((group) => group.skills.map((skill) => buildDocs(group, skill))).filter((doc, index, docs) => docs.findIndex((candidate) => candidate.slug === doc.slug) === index)
 export function getSkillDocumentation(slug: string) {
-  const normalizedSlug = slug === 'html' ? 'html5' : slug
+  const normalizedSlug = slug === 'html' ? 'html5' : slug === 'css' ? 'css3' : slug
   return skillDocumentation.find((doc) => doc.slug === normalizedSlug)
 }

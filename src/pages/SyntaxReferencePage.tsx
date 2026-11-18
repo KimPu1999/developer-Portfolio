@@ -1,13 +1,15 @@
 import { useMemo, useState } from 'react'
 import { ArrowLeft, ChevronDown, ChevronUp, Menu, Search, X } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Container } from '../components/ui/Container'
 import { PageMeta } from '../components/ui/PageMeta'
 import { syntaxReference, syntaxSkills } from '../data/syntaxReference'
 import { SyntaxExamplePanel } from '../components/skills/SyntaxExamplePanel'
 
 export function SyntaxReferencePage() {
-  const [skillSlug, setSkillSlug] = useState(syntaxSkills[0]?.slug || 'html5')
+  const [searchParams] = useSearchParams()
+  const requestedSkill = searchParams.get('skill')
+  const [skillSlug, setSkillSlug] = useState(() => syntaxSkills.some((item) => item.slug === requestedSkill) ? requestedSkill! : syntaxSkills[0]?.slug || 'html5')
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('All')
   const [drawerOpen, setDrawerOpen] = useState(false)
