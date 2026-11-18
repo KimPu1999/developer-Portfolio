@@ -10,7 +10,7 @@ type Tab = 'exercise' | 'quiz' | 'project'
 export function PracticePage() {
   const [searchParams] = useSearchParams()
   const requestedSkill = searchParams.get('skill')
-  const skillSlug = requestedSkill === 'typescript' || requestedSkill === 'react' || requestedSkill === 'tailwind-css' ? requestedSkill : 'javascript'
+  const skillSlug = requestedSkill === 'typescript' || requestedSkill === 'react' || requestedSkill === 'tailwind-css' || requestedSkill === 'php' ? requestedSkill : 'javascript'
   const [tab, setTab] = useState<Tab>('exercise')
   const [level, setLevel] = useState<PracticeDifficulty>('Beginner')
   const skillExercises = exercises.filter((item) => item.skillSlug === skillSlug)
