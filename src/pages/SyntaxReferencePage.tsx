@@ -1,15 +1,17 @@
 import { useMemo, useState } from 'react'
-import { ArrowLeft, Menu, Search, X } from 'lucide-react'
+import { ArrowLeft, ChevronDown, ChevronUp, Menu, Search, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Container } from '../components/ui/Container'
 import { PageMeta } from '../components/ui/PageMeta'
 import { syntaxReference, syntaxSkills } from '../data/syntaxReference'
+import { SyntaxExamplePanel } from '../components/skills/SyntaxExamplePanel'
 
 export function SyntaxReferencePage() {
   const [skillSlug, setSkillSlug] = useState(syntaxSkills[0]?.slug || 'html5')
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('All')
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set())
   const skill = syntaxSkills.find((item) => item.slug === skillSlug)
   const categories = useMemo(() => ['All', ...new Set(syntaxReference.filter((item) => item.skillSlug === skillSlug).map((item) => item.category))], [skillSlug])
   const items = useMemo(() => syntaxReference.filter((item) => item.skillSlug === skillSlug && (category === 'All' || item.category === category) && `${item.name} ${item.description} ${item.category}`.toLowerCase().includes(query.trim().toLowerCase())), [category, query, skillSlug])
@@ -19,7 +21,15 @@ export function SyntaxReferencePage() {
     setCategory('All')
     setQuery('')
     setDrawerOpen(false)
+    setExpandedIds(new Set())
   }
+
+  const toggleExample = (id: string) => setExpandedIds((current) => {
+    const next = new Set(current)
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    return next
+  })
 
   return <main className="min-h-screen overflow-hidden bg-slate-950 text-slate-100">
     <PageMeta title="Syntax Reference | Learn Coding" description="Concise syntax reference lists for every programming skill." />
@@ -42,7 +52,7 @@ export function SyntaxReferencePage() {
         <header className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/95 px-5 py-5 backdrop-blur sm:px-8"><Container className="max-w-5xl px-0"><div className="flex items-center gap-3"><button type="button" onClick={() => setDrawerOpen(true)} className="rounded-lg p-2 text-slate-400 hover:bg-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 lg:hidden" aria-label="Open reference navigation"><Menu size={19} /></button><div><p className="font-mono text-[10px] uppercase tracking-[.2em] text-cyan-400">Syntax Reference</p><p className="mt-1 text-sm text-slate-400">{skill?.name} · {items.length} entries</p></div></div></Container></header>
         <Container className="max-w-5xl px-5 py-8 sm:px-8">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row"><label className="relative block min-w-0 flex-1"><Search size={16} className="absolute left-3 top-3 text-slate-500" /><span className="sr-only">Search syntax</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search syntax" className="w-full rounded-xl border border-slate-800 bg-slate-900 py-2.5 pl-10 pr-4 text-sm text-slate-200 outline-none placeholder:text-slate-600 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20" /></label><label className="sr-only" htmlFor="syntax-category">Category</label><select id="syntax-category" value={category} onChange={(event) => setCategory(event.target.value)} className="rounded-xl border border-slate-800 bg-slate-900 px-3 py-2.5 text-sm text-slate-300 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20">{categories.map((item) => <option key={item}>{item}</option>)}</select></div>
-          <div className="overflow-hidden border-y border-slate-800"><div className="grid grid-cols-[minmax(0,.85fr)_minmax(0,1.7fr)] border-b border-slate-800 px-4 py-3 text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:px-5"><span>Syntax</span><span>Description</span></div>{items.length ? items.map((item) => <div key={item.id} className="grid grid-cols-[minmax(0,.85fr)_minmax(0,1.7fr)] border-b border-slate-800 px-4 py-4 last:border-0 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:px-5"><span className="break-words pr-4 font-mono text-sm font-medium text-white">{item.name}</span><span className="text-sm leading-6 text-slate-400">{item.description}</span></div>) : <div className="px-5 py-14 text-center text-sm text-slate-500">No syntax entries match your search.</div>}</div>
+          <div className="overflow-hidden border-y border-slate-800"><div className="grid grid-cols-[minmax(0,.75fr)_minmax(0,1.5fr)_auto] border-b border-slate-800 px-4 py-3 text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_auto] sm:px-5"><span>Syntax</span><span>Description</span><span className="text-right">Example</span></div>{items.length ? items.map((item) => { const expanded = expandedIds.has(item.id); return <div key={item.id} className="border-b border-slate-800 last:border-0"><div className="grid grid-cols-[minmax(0,.75fr)_minmax(0,1.5fr)_auto] items-center gap-3 px-4 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_auto] sm:px-5"><span className="break-words pr-2 font-mono text-sm font-medium text-white">{item.name}</span><span className="text-sm leading-6 text-slate-400">{item.description}</span><button type="button" onClick={() => toggleExample(item.id)} aria-expanded={expanded} aria-controls={`example-${item.id}`} className="inline-flex items-center justify-end gap-1.5 whitespace-nowrap rounded-lg px-2 py-2 text-xs font-semibold text-cyan-300 transition hover:bg-cyan-400/10 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">{expanded ? <>Hide Example <ChevronUp size={14} /></> : <>Show Example <ChevronDown size={14} /></>}</button></div><div id={`example-${item.id}`} className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${expanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}><div className="min-h-0 overflow-hidden"><SyntaxExamplePanel item={item} /></div></div></div> }) : <div className="px-5 py-14 text-center text-sm text-slate-500">No syntax entries match your search.</div>}</div>
         </Container>
       </section>
     </div>

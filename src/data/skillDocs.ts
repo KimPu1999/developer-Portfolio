@@ -2,6 +2,7 @@ import type { SkillDocumentation, SkillGroup, SkillLesson, SkillModule } from '.
 import { skillGroups } from './skills'
 
 export function skillSlug(name: string) {
+  if (name.trim().toLowerCase() === 'c++') return 'c-plus-plus'
   return name.toLowerCase().replace(/\+/g, 'plus').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
