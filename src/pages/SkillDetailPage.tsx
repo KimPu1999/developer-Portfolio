@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { ArrowLeft, BookOpen, Check, ChevronDown, ChevronRight, Clock3, Menu, Search, X } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import { Container } from '../components/ui/Container'
@@ -17,7 +17,6 @@ export function SkillDetailPage() {
   const [openModules, setOpenModules] = useState<string[]>(doc?.modules.map((module) => module.id) ?? [])
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [query, setQuery] = useState('')
-  const articleRef = useRef<HTMLElement>(null)
   const lessons = useMemo(() => doc?.modules.flatMap((module) => module.lessons) ?? [], [doc])
   const activeLesson = lessons.find((lesson) => lesson.id === activeLessonId) ?? lessons[0]
   const activeIndex = lessons.findIndex((lesson) => lesson.id === activeLesson?.id)
@@ -31,7 +30,7 @@ export function SkillDetailPage() {
   const isJavaScript = doc.slug === 'javascript'
   const isFocusedSkill = isHtml || isCss || isJavaScript
   const displayName = isHtml ? 'HTML' : isCss ? 'CSS' : doc.skill.name
-  const selectLesson = (lessonId: string) => { setActiveLessonId(lessonId); setSidebarOpen(false); articleRef.current?.scrollTo({ top: 0, behavior: 'smooth' }); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+  const selectLesson = (lessonId: string) => { setActiveLessonId(lessonId); setSidebarOpen(false); document.querySelector<HTMLElement>('.skill-detail-layout > article')?.scrollTo({ top: 0, behavior: 'smooth' }); window.scrollTo({ top: 0, behavior: 'smooth' }) }
   const toggleComplete = () => setCompleted((items) => items.includes(activeLesson.id) ? items.filter((id) => id !== activeLesson.id) : [...items, activeLesson.id])
   const goToLesson = (offset: number) => { const next = lessons[activeIndex + offset]; if (next) selectLesson(next.id) }
   const continueLesson = lessons.find((lesson) => !completed.includes(lesson.id)) ?? lessons[lessons.length - 1]
@@ -39,7 +38,7 @@ export function SkillDetailPage() {
   return <main className="min-h-screen bg-slate-50/70 dark:bg-slate-950">
     <PageMeta title={`${displayName} | Learning Path`} description={doc.skill.description} />
     <div className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95"><Container className="flex min-h-16 items-center justify-between gap-4"><div className="flex items-center gap-3"><button type="button" onClick={() => setSidebarOpen(true)} className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 lg:hidden" aria-label="Open lesson navigation"><Menu size={20} /></button><Link to="/skills" className="hidden items-center gap-2 text-sm font-semibold text-slate-500 hover:text-cyan-500 sm:flex"><ArrowLeft size={16} /> Back to Skills</Link><span className="hidden h-5 w-px bg-slate-200 dark:bg-slate-800 sm:block" /><span className="flex items-center gap-2 text-sm font-semibold text-slate-950 dark:text-white"><BookOpen size={17} className="text-cyan-500" /> {displayName}</span></div><div className="flex items-center gap-3 text-xs text-slate-500"><span>{completed.length}/{lessons.length} lessons</span><div className="hidden h-2 w-24 overflow-hidden rounded-full bg-slate-200 sm:block dark:bg-slate-800"><div className="h-full rounded-full bg-cyan-400 transition-all" style={{ width: `${progress}%` }} /></div><span className="font-semibold text-cyan-600 dark:text-cyan-300">{progress}%</span></div></Container></div>
-    <Container className="grid max-w-[1500px] gap-8 py-8 lg:grid-cols-[250px_minmax(0,1fr)_220px]">
+    <Container className="skill-detail-layout grid max-w-[1500px] gap-8 py-8 lg:grid-cols-[250px_minmax(0,1fr)_220px]">
       {sidebarOpen && <button type="button" aria-label="Close lesson navigation" onClick={() => setSidebarOpen(false)} className="fixed inset-0 z-40 bg-slate-950/50 lg:hidden" />}
       <aside className={`fixed inset-y-0 left-0 z-50 w-[min(86vw,320px)] overflow-y-auto border-r border-slate-200 bg-white p-5 transition-transform dark:border-slate-800 dark:bg-slate-950 lg:sticky lg:top-24 lg:z-auto lg:block lg:max-h-[calc(100vh-7rem)] lg:w-auto lg:translate-x-0 lg:border-0 lg:bg-transparent lg:p-0 lg:dark:bg-transparent ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`} aria-label="Lesson navigation">
         <div className="flex items-center justify-between lg:hidden"><span className="font-semibold text-slate-950 dark:text-white">Course navigation</span><button type="button" onClick={() => setSidebarOpen(false)} className="rounded-lg p-2 text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400" aria-label="Close lesson navigation"><X size={19} /></button></div>
