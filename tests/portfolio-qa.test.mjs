@@ -44,7 +44,7 @@ test('professional WordPress projects remain separate from personal software pro
   assert.match(projectSync, /attendent/)
   assert.match(projectSync, /F-Tech Solution/)
   for (const url of ['https:\/\/www\.fusionsol\.com\/', 'https:\/\/www\.jarvizapp\.com\/', 'https:\/\/f-techsolution\.com\/', 'https:\/\/www\.thetysmyanmar\.com\/']) assert.match(projects, new RegExp(`liveUrl: '${url}'`))
-  assert.equal((projects.match(/githubUrl: 'https:\/\/github\.com\/KimPu1999'/g) ?? []).length, 4)
+  assert.equal((projects.match(/githubUrl: 'https:\/\/github\.com\/KimPu1999'/g) ?? []).length, 0)
   const githubMigration = await read('backend/database/migrations/2026_11_11_000255_add_personal_project_github_profile_links.php')
   assert.match(githubMigration, /github\.com\/KimPu1999/)
   assert.match(projects, /const professionalCaseStudy/)
@@ -140,7 +140,7 @@ test('verified profile contact details are wired without inventing social URLs',
   assert.match(profile, /kimpiang1999@gmail\.com/)
   assert.match(profile, /09954060717/)
   assert.match(profile, /value: 'Tamwe'/)
-  assert.match(profile, /https:\/\/github\.com\/KimPu1999/)
+  assert.doesNotMatch(profile, /https:\/\/github\.com\/KimPu1999/)
   assert.match(profile, /https:\/\/www\.linkedin\.com\/in\/kim-pu-5189bb2ba\//)
 })
 

@@ -10,6 +10,52 @@ export interface Skill {
   projectSlugs?: string[]
 }
 
+export interface SkillLesson {
+  id: string
+  title: string
+  level?: 'Beginner' | 'Intermediate' | 'Advanced' | 'Professional'
+  summary: string
+  sections: Array<{ heading: string; body: string }>
+  overview?: string
+  objectives?: string[]
+  theory?: string
+  syntax?: string
+  concepts?: string[]
+  codeExamples?: SkillCodeExample[]
+  practicalUseCases?: string[]
+  commonMistakes?: string[]
+  bestPractices?: string[]
+  keyTakeaways?: string[]
+  summaryText?: string
+  relatedLessonIds?: string[]
+  readingTime?: string
+}
+
+export interface SkillCodeExample {
+  language: string
+  code: string
+  explanation: string
+}
+
+export interface SkillModule {
+  id: string
+  title: string
+  level?: 'Beginner' | 'Intermediate' | 'Advanced' | 'Professional'
+  lessons: SkillLesson[]
+}
+
+export interface SkillDocumentation {
+  slug: string
+  category: string
+  skill: Skill
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced'
+  duration: string
+  prerequisites: string[]
+  objectives: string[]
+  technologyInfo: string
+  modules: SkillModule[]
+}
+
 export interface SkillGroup {
   name: string
   eyebrow: string

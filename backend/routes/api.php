@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\V1\AdminSocialLinkController;
 use App\Http\Controllers\Api\V1\MediaController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\ContactController;
+use App\Http\Controllers\Api\V1\LessonNoteController;
 use App\Http\Controllers\Api\V1\PublicContentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HealthController;
@@ -24,6 +25,11 @@ Route::prefix('v1')->group(function (): void {
     Route::get('/projects/{project:slug}', [PublicContentController::class, 'project']);
     Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact');
     Route::post('/analytics/events', [AnalyticsController::class, 'store'])->middleware('throttle:analytics');
+    Route::middleware('auth:sanctum')->prefix('notes')->group(function (): void {
+        Route::get('/{lessonKey}', [LessonNoteController::class, 'show'])->where('lessonKey', '.*');
+        Route::put('/{lessonKey}', [LessonNoteController::class, 'update'])->where('lessonKey', '.*');
+        Route::delete('/{lessonKey}', [LessonNoteController::class, 'destroy'])->where('lessonKey', '.*');
+    });
 
     Route::post('/auth/login', [AuthController::class, 'login'])->middleware('throttle:login');
     Route::post('/auth/forgot-password', [AuthController::class, 'forgotPassword'])->middleware('throttle:login');
