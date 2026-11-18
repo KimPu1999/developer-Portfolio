@@ -17,7 +17,6 @@ export const profile = {
   contact: [
     { label: 'Email', value: 'kimpiang1999@gmail.com', href: 'mailto:kimpiang1999@gmail.com' },
     { label: 'Phone', value: '09954060717', href: 'tel:+959954060717' },
-    { label: 'GitHub', value: 'github.com/KimPu1999', href: 'https://github.com/KimPu1999' },
     { label: 'LinkedIn', value: 'linkedin.com/in/kim-pu-5189bb2ba', href: 'https://www.linkedin.com/in/kim-pu-5189bb2ba/' },
     { label: 'Location', value: 'Tamwe' },
   ],
